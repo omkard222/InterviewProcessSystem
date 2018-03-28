@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <title>InterviewPortal</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <body class="no-skin <%= !user_signed_in? ? " login-layout" : ''%>">
+      <%= render "layouts/header" %>
+      <div class="main-container ace-save-state" id="main-container">
+        <% if user_signed_in? %>
+          <%= render "layouts/side_bar" %>
+          <div class="main-content">
+            <div class="main-content-inner">
+              <div class="page-content">
+                <%= yield %>
+              </div>
+            </div>
+          </div>
+        <% else %>
+          <div class="main-content">
+            <%= yield %>
+          </div>
+        <% end %>
+        <%= render "layouts/footer" %>
+      </div>
+    </body>
+  </head>
+</html>
