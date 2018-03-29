@@ -1,0 +1,7 @@
+<div>
+<% if user_signed_in?%>
+  <h1> Hello, <%=current_user.email%></h1>
+    <br>
+    <%end%>
+</div>
+  <li> <%= link_to 'SignOut' ,   destroy_user_session_path, :method => 'delete' %></li>

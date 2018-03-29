@@ -14,6 +14,8 @@
         </small>
       </a>
     </div>
+
+      <% if user_signed_in?%>
     <div class="navbar-buttons navbar-header pull-right" role="navigation">
       <ul class="nav ace-nav">
         <li class="light-blue dropdown-modal">
@@ -40,7 +42,7 @@
             </li>
             <li class="divider"></li>
             <li>
-              <a href="#">
+              <a rel="nofollow" data-method="delete" href="/users/sign_out">
                 <i class="ace-icon fa fa-power-off"></i>
                 Logout
               </a>
@@ -49,5 +51,6 @@
         </li>
       </ul>
     </div>
+    <%end%>
   </div>
 </div>
