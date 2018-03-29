@@ -1,0 +1,2 @@
+class Dutable < ApplicationRecord
+end

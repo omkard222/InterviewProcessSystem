@@ -10,7 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180328040304) do
+ActiveRecord::Schema.define(version: 20180329092957) do
+
+  create_table "dutables", force: :cascade do |t|
+    t.string "du_name"
+    t.integer "du_id_code"
+    t.text "du_description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "employees", force: :cascade do |t|
+    t.string "emp_firstname"
+    t.string "emp_lastname"
+    t.integer "emp_id"
+    t.string "emp_designation"
+    t.string "emp_skills"
+    t.string "emp_mail"
+    t.string "emp_phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "project_name"
+    t.integer "pro_idcode"
+    t.text "pro_description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

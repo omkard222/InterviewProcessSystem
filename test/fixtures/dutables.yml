@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  du_name: MyString
+  du_id_code: 1
+  du_description: MyText
+
+two:
+  du_name: MyString
+  du_id_code: 1
+  du_description: MyText
