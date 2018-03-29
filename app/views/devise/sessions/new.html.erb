@@ -20,6 +20,7 @@
               </h4>
               <div class='space-6'></div>
               <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+                <%= devise_error_messages! %>
                 <fieldset>
                   <label class='block clearfix'>
                     <span class='block input-icon input-icon-right'>
@@ -54,7 +55,7 @@
             <!-- /.widget-main -->
             <div class='toolbar clearfix'>
               <div>
-                <a class='forgot-password-link' data-target='#forgot-box' href='#'>
+                <a class='forgot-password-link' data-target='#forgot-box' href='/users/password/new'>
                   <i class='ace-icon fa fa-arrow-left'></i>
                   I forgot my password
                 </a>
