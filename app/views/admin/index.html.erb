@@ -1,0 +1,21 @@
+<style>
+
+</style>
+
+<div>
+<ul>
+    <% Dutable.all.each do |du| %>
+      <li><%= du.du_name %></li>
+        <ul>
+            <% du.projects.each do |pr| %>
+              <li><%= pr.project_name %></li>
+                <ul>
+                    <% pr.employees.each do |emp| %>
+                      <li><%= emp.emp_firstname %></li>
+                    <%end%>
+                </ul>
+            <%end%>
+        </ul>
+    <%end%>
+</ul>
+</div>
