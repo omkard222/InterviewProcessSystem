@@ -1,0 +1,53 @@
+<h1>Listing requirements</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Position</th>
+      <th>Skills</th>
+      <th>Experience</th>
+      <th>Salary</th>
+      <th>Qualification</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @requirements.each do |requirement| %>
+      <tr>
+        <td>
+          <%= requirement.position %>
+        </td>
+        <td>
+          <%= requirement.skills %>
+        </td>
+        <td>
+          <%= requirement.experience %>
+        </td>
+        <td>
+          <%= requirement.salary %>
+        </td>
+        <td>
+          <%= requirement.qualification %>
+        </td>
+        <td>
+          <%= link_to 'Show', requirement %>
+        </td>
+        <td>
+          <%= link_to 'Edit', edit_requirement_path(requirement) %>
+        </td>
+        <td>
+          <%= link_to 'Destroy', requirement, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+        <td>
+          <%= link_to 'new', new_requirement_candidate_path(requirement) %>
+        </td>
+        <td>
+          <%= link_to 'details', requirement_candidates_path(requirement) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br/>
+<%= link_to 'New Requirement', new_requirement_path %>

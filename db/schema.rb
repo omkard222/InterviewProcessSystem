@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180330064008) do
+ActiveRecord::Schema.define(version: 20180330061812) do
+
+  create_table "candidates", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "contact"
+    t.string "email"
+    t.integer "requirement_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "resume"
+    t.index ["requirement_id"], name: "index_candidates_on_requirement_id"
+  end
 
   create_table "dutables", force: :cascade do |t|
     t.string "du_name"
@@ -47,6 +59,16 @@ ActiveRecord::Schema.define(version: 20180330064008) do
     t.datetime "updated_at", null: false
     t.integer "dutable_id"
     t.index ["dutable_id"], name: "index_projects_on_dutable_id"
+  end
+
+  create_table "requirements", force: :cascade do |t|
+    t.string "position"
+    t.string "skills"
+    t.integer "experience"
+    t.string "salary"
+    t.string "qualification"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

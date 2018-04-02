@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Position:
+  = @requirement.position
+%p
+  %b Skills:
+  = @requirement.skills
+%p
+  %b Experience:
+  = @requirement.experience
+%p
+  %b Salary:
+  = @requirement.salary
+%p
+  %b Qualification:
+  = @requirement.qualification
+
+= link_to 'Edit', edit_requirement_path(@requirement)
+\|
+= link_to 'Back', requirements_path

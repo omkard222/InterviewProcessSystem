@@ -1,6 +1,5 @@
 class AdminController < ApplicationController
   def index
-  @emp =  Employee.all
-
+    @emp = Employee.all
   end
 end
