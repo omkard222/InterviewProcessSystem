@@ -1,0 +1,39 @@
+<h1>Listing candidates</h1>
+<table>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Contact</th>
+      <th>Email</th>
+      <th>Resume</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%  @candidates.each do |candidate| %>
+      <tr>
+        <td>
+          <%= candidate.first_name %>
+        </td>
+        <td>
+          <%= candidate.last_name %>
+        </td>
+        <td>
+          <%= candidate.contact %>
+        </td>
+        <td>
+          <%= candidate.email %>
+        </td>
+        <td>
+          <%= candidate.resume %>
+        </td>
+         <td><%= link_to "Download Resume", candidate.resume_url %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br/>
+<%= link_to 'New Candidate',  new_requirement_candidate_path %>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  position: MyString
+  skills: MyString
+  experience: 1
+  salary: MyString
+  qualification: MyString
+
+two:
+  position: MyString
+  skills: MyString
+  experience: 1
+  salary: MyString
+  qualification: MyString

@@ -21,3 +21,10 @@
 /yarn-error.log
 
 .byebug_history
+
+# public
+/public/uploads/*
+
+# DS_store
+.DS_Store
+app/.DS_Store

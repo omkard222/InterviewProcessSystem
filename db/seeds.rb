@@ -33,3 +33,14 @@ counter = 0
     end
   end
 end
+
+Requirement.create!(position: "ROR Developer", skills: "ROR", experience: 3, salary: 7, qualification: "BE/BTECH")
+
+10.times do |n|
+  Requirement.create(
+    position: ["Software Engineer","Project Manager","Team Leader"].shuffle.first,
+    skills: ["ROR","sap.net","java", "Oracle"].shuffle.first,
+    experience: [0, 1, 3, 5, 7].shuffle.first,
+    salary: [3, 5, 6, 7, 10].shuffle.first,
+    qualification: ["BE", "BTECH", "MCA", "BSC-IT"].shuffle.first)
+end

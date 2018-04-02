@@ -21,6 +21,7 @@
               <div class='space-6'></div>
               <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
                 <%= devise_error_messages! %>
+                <%= render 'layouts/error_messages', object: resource %>
                 <fieldset>
                   <label class='block clearfix'>
                     <span class='block input-icon input-icon-right'>

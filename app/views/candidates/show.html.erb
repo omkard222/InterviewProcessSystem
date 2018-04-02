@@ -1,0 +1,27 @@
+<p id="notice">
+  <%= notice %>
+</p>
+<p>
+  <b>First name:</b>
+  <%= @candidate.first_name %>
+</p>
+<p>
+  <b>Last name:</b>
+  <%= @candidate.last_name %>
+</p>
+<p>
+  <b>Contact:</b>
+  <%= @candidate.contact %>
+</p>
+<p>
+  <b>Email:</b>
+  <%= @candidate.email %>
+</p>
+<p>
+  <strong>Resume:</strong>
+  <%= @candidate.resume %>
+</p>
+
+<%= link_to 'Edit', edit_requirement_candidate_path(@candidate) %>
+\|
+<%= link_to 'Back', requirement_candidates_path %>
