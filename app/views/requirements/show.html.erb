@@ -1,0 +1,26 @@
+<p id="notice">
+  <%= notice %>
+</p>
+<p>
+  <b>Position:</b>
+  <%= @requirement.position %>
+</p>
+<p>
+  <b>Skills:</b>
+  <%= get_skills(@requirement).pluck(:name).join(", ") %>
+</p>
+<p>
+  <b>Experience:</b>
+  <%= @requirement.experience %>
+</p>
+<p>
+  <b>Salary:</b>
+  <%= @requirement.salary %>
+</p>
+<p>
+  <b>Qualification:</b>
+  <%= @requirement.qualification %>
+</p>
+<%= link_to 'Edit', edit_requirement_path(@requirement) %>
+|
+<%= link_to 'Back', requirements_path %>

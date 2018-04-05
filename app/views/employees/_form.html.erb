@@ -1,0 +1,54 @@
+<h1>
+Employee Details
+</h1><%= form_for @employee do |f| %>
+  <% if @employee.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= "#{pluralize(@employee.errors.count, "error")} prohibited this requirement from being saved:" %>
+      </h2>
+      <ul>
+        <% @employee.errors.full_messages.each do |message| %>
+          <li>
+            <%= message %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :First_Name %>
+    <%= f.text_field :emp_firstname %>
+  </div>
+  <div class="field">
+    <%= f.label :Last_Name %>
+    <%= f.text_field :emp_lastname %>
+  </div>
+  <div class="field">
+    <%= f.label :Employee_Id %>
+    <%= f.text_field :emp_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Designation %>
+    <%= f.text_field :emp_designation %>
+  </div>
+  <div class="field">
+    <%= f.label :Email_Id %>
+    <%= f.text_field :emp_mail %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Phone_No %>
+    <%= f.text_field :emp_phone %>
+  </div>
+
+  <div class="field">
+    <label>Skill</label>
+    <%= f.select :skill_id, Skill.pluck(:name, :id), selected: @employee.employee_requirement_skills.pluck(:skill_id).last%>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit 'Save' %>
+  </div>
+<% end %>

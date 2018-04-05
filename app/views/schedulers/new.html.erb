@@ -1,0 +1,58 @@
+<h1>Schedule Interview</h1>
+<div id="error_explanation">
+  <h3>
+  <%- if @scheduler.errors.present?%>
+    <ul>
+      <% @scheduler.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+  <%- end%>
+</h3>
+</div>
+<div class ="main-content-inner">
+  <div class ="page-content">
+    <div class="row">
+      <div class="col-xs-8">
+
+
+            <%= form_for @scheduler, {url: "/requirements/#{params[:requirement_id]}/candidates/#{params[:candidate_id]}/schedulers"} do |f| %>
+
+              <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Interview Date: </label>
+                  <div class="col-sm-9">
+                    <input type="date" name="scheduler[interview_date]" id="scheduler_interview_date">
+                  </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Start Time: </label>
+                  <div class="col-sm-9">
+                    <input type="time" name="scheduler[start_time]" id="scheduler_start_time" >
+                  </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> End Time:</label>
+                  <div class="col-sm-9">
+                  <input type="time" name="scheduler[end_time]" id="scheduler_end_time" >
+                  </div>
+              </div>
+
+
+
+                    <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Inteviewer</label>
+                      <div class="col-sm-9">
+                    <%= f.select :employee_id, Employee.get_employees_from_requirements(@requirement).collect{ |e| [e.full_name, e.id]} %>
+                  </div>
+                  </div>
+
+                  <div class="form-group">
+                    <%= f.submit 'Save' %>
+                  </div>
+            <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>

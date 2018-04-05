@@ -1,6 +1,4 @@
-<p id="notice">
-  <%= notice %>
-</p>
+
 <p>
   <b>First name:</b>
   <%= @candidate.first_name %>
@@ -17,11 +15,8 @@
   <b>Email:</b>
   <%= @candidate.email %>
 </p>
-<p>
-  <strong>Resume:</strong>
-  <%= @candidate.resume %>
-</p>
+
 
 <%= link_to 'Edit', edit_requirement_candidate_path(@candidate) %>
-\|
+|
 <%= link_to 'Back', requirement_candidates_path %>

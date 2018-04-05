@@ -1,0 +1,39 @@
+<h1>Employee List</h1>
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Employee name</th>
+      <th>Employee Id</th>
+      <th>Designation</th>
+      <th>Skills</th>
+      <th>Phone No</th>
+      <th>Email Id</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <% @employee.each do |emp| %>
+      <tr>
+        <td>
+          <%= emp.emp_firstname %>
+        </td>
+        <td>
+          <%= emp.emp_id %>
+        </td>
+        <td>
+          <%= emp.emp_designation  %>
+        </td>
+        <td>
+          <%= get_skills(emp).pluck(:name).join(", ") %>
+        </td>
+        <td>
+          <%= emp.emp_mail  %>
+        </td>
+        <td>
+          <%= emp.emp_phone  %>
+        </td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
   root 'home#index'
   devise_for :users
-
+  resources :employees
   resources :requirements do
-    resources :candidates
+    resources :candidates do
+      resources :schedulers
+    end
   end
+
 
   get 'users/index'
   get 'admin/index'

@@ -1,4 +1,6 @@
-<%= form_for [@requirement, @candidate] do |f| %>
+<div class = "row">
+  <div class ="col-md-6 col-md-offset-3">
+        <%= form_for [@requirement, @candidate] do |f| %>
   <% if @candidate.errors.any? %>
     <div id="error_explanation">
       <h2>
@@ -13,6 +15,9 @@
       </ul>
     </div>
   <% end %>
+
+
+
   <div class="field">
     <%= f.label :first_name %>
     <%= f.text_field :first_name %>
@@ -23,18 +28,20 @@
   </div>
   <div class="field">
     <%= f.label :contact %>
-    <%= f.text_field :contact %>
+    <input type="tel"  pattern="^\d{10}$" name="candidate[contact]" id="candidate_contact" required>
   </div>
   <div class="field">
     <%= f.label :email %>
-    <%= f.text_field :email %>
+    <input type="email" name="candidate[email]" id="candidate_email" required>
   </div>
   <div>
   <%= f.label :resume %><br>
   <%= f.file_field :resume %>
   </div>
 
-  <div class="actions">
-    <%= f.submit 'Save' %>
+  <div class="actions" >
+    <%= f.submit 'Save' , class: "btn btn-primary" %>
   </div>
 <% end %>
+</div>
+</div>
