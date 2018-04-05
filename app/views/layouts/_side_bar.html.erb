@@ -1,12 +1,71 @@
 <div class="sidebar responsive ace-save-state" id="sidebar">
   <ul class="nav nav-list">
-    <li>
-      <a href="index.html">
-        <i class="menu-icon fa fa-tachometer"></i>
-        <span class="menu-text">Dashboard</span>
-      </a>
-      <b class="arrow"></b>
-    </li>
+
+
+        <li class="">
+          <a href="#" class="dropdown-toggle">
+            <i class="menu-icon fa fa-caret-right"></i>
+              Requirements
+
+            <b class="arrow fa fa-angle-down"></b>
+          </a>
+
+          <b class="arrow"></b>
+
+          <ul class="submenu">
+            <li class="">
+              <a href="<%=requirements_path %>">
+                <i class="menu-icon fa fa-caret-right"></i>
+                  Requirement List
+              </a>
+
+              <b class="arrow"></b>
+            </li>
+
+            <li class="">
+              <a href="<%= new_requirement_path %>">
+                <i class="menu-icon fa fa-caret-right"></i>
+                Add Requirment
+              </a>
+
+              <b class="arrow"></b>
+            </li>
+
+          </ul>
+        </li>
+        <li class="">
+          <a href="#" class="dropdown-toggle">
+            <i class="menu-icon fa fa-caret-right"></i>
+            Employees
+
+            <b class="arrow fa fa-angle-down"></b>
+          </a>
+
+          <b class="arrow"></b>
+
+          <ul class="submenu">
+            <li class="">
+              <a href="<%=employees_path %>">
+                <i class="menu-icon fa fa-caret-right"></i>
+                  Employee List
+              </a>
+
+              <b class="arrow"></b>
+            </li>
+
+            <li class="">
+              <a href="<%=new_employee_path%>">
+                <i class="menu-icon fa fa-caret-right"></i>
+                Add Employee
+              </a>
+
+              <b class="arrow"></b>
+            </li>
+
+          </ul>
+        </li>
+
+
   </ul>
   <!-- /.nav-list
   -->

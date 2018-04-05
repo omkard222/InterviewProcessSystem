@@ -1,39 +1,66 @@
-<%= form_for @requirement do |f| %>
-  <% if @requirement.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= "#{pluralize(@requirement.errors.count, "error")} prohibited this requirement from being saved:" %>
-      </h2>
-      <ul>
-        <% @requirement.errors.full_messages.each do |message| %>
-          <li>
-            <%= message %>
-          </li>
+<div class ="main-content-inner">
+  <div class ="page-content">
+    <div class="row">
+
+          <div class ="col-md-6 col-md-offset-3">
+        <%= form_for @requirement, html: {class: "form-horizontal"} do |f| %>
+          <% if @requirement.errors.any? %>
+            <div id="error_explanation">
+              <h2>
+                <%= "#{pluralize(@requirement.errors.count, "error")} prohibited this requirement from being saved:" %>
+              </h2>
+              <ul>
+                <% @requirement.errors.full_messages.each do |message| %>
+                  <li>
+                    <%= message %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <div class="form-group">
+						<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Position </label>
+						<div class="col-sm-9">
+            <input class="col-xs-10 col-sm-5" type="text" name="requirement[position]" id="requirement_position" required>
+						</div>
+					</div>
+          <div class="form-group">
+						<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Skills </label>
+						<div class="col-sm-9">
+              <select name="requirement[skill_id]" id="requirement_skill_id" required>
+                  <option value="1">Front End</option>
+                  <option value="2">DBMS</option>
+                  <option value="3">Front End</option>
+                  <option value="4">Dot Net</option>
+                  <option value="5">Ruby On Rails</option>
+                  <option value="6">Ruby On Rails</option>
+              </select>
+						</div>
+					</div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Experience </label>
+            <div class="col-sm-9">
+            <%= f.select :experience, options_for_select(0..50) %>
+
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> salary </label>
+            <div class="col-sm-9">
+            <input class="col-xs-10 col-sm-5" type="text" name="requirement[salary]" id="requirement_salary" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Qualification </label>
+            <div class="col-sm-9">
+            <input class="col-xs-10 col-sm-5" type="text" name="requirement[qualification]" id="requirement_qualification" required>
+            </div>
+          </div>
+          <center>
+           <button type="sumbit" value='save' data-disable-with="save" class="btn btn-primary">Save</button>
+        <center>
         <% end %>
-      </ul>
+      </div>
     </div>
-  <% end %>
-  <div class="field">
-    <%= f.label :position %>
-    <%= f.text_field :position %>
   </div>
-  <div class="field">
-    <%= f.label :skills %>
-    <%= f.text_field :skills %>
-  </div>
-  <div class="field">
-    <%= f.label :experience %>
-    <%= f.number_field :experience %>
-  </div>
-  <div class="field">
-    <%= f.label :salary %>
-    <%= f.text_field :salary %>
-  </div>
-  <div class="field">
-    <%= f.label :qualification %>
-    <%= f.text_field :qualification %>
-  </div>
-  <div class="actions">
-    <%= f.submit 'Save' %>
-  </div>
-<% end %>
+</div>

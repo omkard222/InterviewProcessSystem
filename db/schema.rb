@@ -10,21 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180330061812) do
+ActiveRecord::Schema.define(version: 20180403070914) do
 
-  create_table "candidates", force: :cascade do |t|
+  create_table "candidates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "contact"
     t.string "email"
-    t.integer "requirement_id"
+    t.bigint "requirement_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "resume"
     t.index ["requirement_id"], name: "index_candidates_on_requirement_id"
   end
 
-  create_table "dutables", force: :cascade do |t|
+  create_table "dutables", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "du_name"
     t.integer "du_id_code"
     t.text "du_description"
@@ -32,7 +32,15 @@ ActiveRecord::Schema.define(version: 20180330061812) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "employees", force: :cascade do |t|
+  create_table "employee_requirement_skills", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "employee_requirement_skillable_id"
+    t.string "employee_requirement_skillable_type"
+    t.integer "skill_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "employees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "emp_firstname"
     t.string "emp_lastname"
     t.integer "emp_id"
@@ -44,34 +52,55 @@ ActiveRecord::Schema.define(version: 20180330061812) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "employees_projects", id: false, force: :cascade do |t|
+  create_table "employees_projects", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "employee_id"
     t.integer "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "projects", force: :cascade do |t|
+  create_table "projects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "project_name"
     t.integer "pro_idcode"
     t.text "pro_description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "dutable_id"
+    t.bigint "dutable_id"
     t.index ["dutable_id"], name: "index_projects_on_dutable_id"
   end
 
-  create_table "requirements", force: :cascade do |t|
+  create_table "requirements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "position"
     t.string "skills"
     t.integer "experience"
-    t.string "salary"
+    t.integer "salary"
     t.string "qualification"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "schedulers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.time "start_time"
+    t.time "end_time"
+    t.date "interview_date"
+    t.bigint "candidate_id"
+    t.bigint "employee_id"
+    t.bigint "requirement_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["candidate_id"], name: "index_schedulers_on_candidate_id"
+    t.index ["employee_id"], name: "index_schedulers_on_employee_id"
+    t.index ["requirement_id"], name: "index_schedulers_on_requirement_id"
+  end
+
+  create_table "skills", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.boolean "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -88,4 +117,9 @@ ActiveRecord::Schema.define(version: 20180330061812) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "candidates", "requirements"
+  add_foreign_key "projects", "dutables"
+  add_foreign_key "schedulers", "candidates"
+  add_foreign_key "schedulers", "employees"
+  add_foreign_key "schedulers", "requirements"
 end
