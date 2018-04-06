@@ -1,0 +1,12 @@
+<p>
+  <strong> Du name</strong>
+  <%=h @dutable.du_name %>
+</p>
+
+<ol>
+  <%for project in @dutable.projects%>
+        <li> <%= project.project_name%>></li>
+        <li> <%= project.pro_idcode%>></li>
+        <li> <%= project.pro_description%>></li>
+<%end%>
+</ol>

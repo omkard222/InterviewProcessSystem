@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180403070914) do
+ActiveRecord::Schema.define(version: 20180403070925) do
 
   create_table "candidates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "first_name"
@@ -77,6 +77,9 @@ ActiveRecord::Schema.define(version: 20180403070914) do
     t.string "qualification"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "project_id"
+    t.string "description"
+    t.index ["project_id"], name: "index_requirements_on_project_id"
   end
 
   create_table "schedulers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -119,6 +122,7 @@ ActiveRecord::Schema.define(version: 20180403070914) do
 
   add_foreign_key "candidates", "requirements"
   add_foreign_key "projects", "dutables"
+  add_foreign_key "requirements", "projects"
   add_foreign_key "schedulers", "candidates"
   add_foreign_key "schedulers", "employees"
   add_foreign_key "schedulers", "requirements"
