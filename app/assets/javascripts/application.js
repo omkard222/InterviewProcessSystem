@@ -20,3 +20,4 @@
 //= require spin.js
 //= require spinbox.min.js
 //= require jquery.magnific-popup.js
+//= require cocoon
