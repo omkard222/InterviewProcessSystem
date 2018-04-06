@@ -10,6 +10,7 @@ class DutablesController < ApplicationController
   # GET /requirements/1
   # GET /requirements/1.json
   def show
+
     @dutable = Dutable.find(params[:id])
   end
 
@@ -17,12 +18,8 @@ class DutablesController < ApplicationController
   def new
     @dutable = Dutable.new
     @project = @dutable.projects.build
-    @requirement = @project.requirements.build
-    # 3.times do
-    #   project = @dutable.projects.build
-    #     10.times {project.requirements.build}
-    #
-    # end
+    
+
   end
 
   # GET /requirements/1/edit
@@ -35,6 +32,7 @@ class DutablesController < ApplicationController
     @dutable = Dutable.new(dutable_params)
     respond_to do |format|
       if @dutable.save
+
         format.html { redirect_to @dutable}
         format.json { render :show, status: :created, location: @dutable }
       else
