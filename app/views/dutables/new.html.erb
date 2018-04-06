@@ -1,53 +1,22 @@
-<div class ="main-content-inner">
-  <div class ="page-content">
-    <div class="row">
+<%=form_for @dutable do |f| %>
 
-          <div class ="col-md-6 col-md-offset-3">
-        <%= form_for @dutable, html: {class: "form-horizontal"} do |f| %>
-          <% if @dutable.errors.any? %>
-            <div id="error_explanation">
-              <h2>
-                <%= "#{pluralize(@dutable.errors.count, "error")} prohibited this requirement from being saved:" %>
-              </h2>
-              <ul>
-                <% @dutable.errors.full_messages.each do |du| %>
-                  <li>
-                    <%= message %>
-                  </li>
-                <% end %>
-              </ul>
-            </div>
-          <% end %>
-          <div class="form-group">
-						<label class="col-sm-3 control-label no-padding-right" for="form-field-1">DU Name: </label>
-						<div class="col-sm-9">
-            <input class="col-xs-10 col-sm-5" type="text" name="du_name"  required>
-						</div>
-					</div>
-          <div class="form-group">
-						<label class="col-sm-3 control-label no-padding-right" for="form-field-1">DU Code: </label>
-						<div class="col-sm-9">
-            <input class="col-xs-10 col-sm-5" type="text" name="du_id_code"  required>
-						</div>
-					</div>
-          <div class="form-group">
-						<label class="col-sm-3 control-label no-padding-right" for="form-field-1">Description: </label>
-						<div class="col-sm-9">
-            <input class="col-xs-10 col-sm-5" type="text" name="du_description"  required>
-						</div>
-					</div>
+  <p>
+      <%=f.label :DU_Name%>
+      <%=f.text_field :du_name%>
+  </p>
+  <p>
+      <%=f.label :DU_Code%>
+      <%=f.text_field :du_id_code%>
+  </p>
+  <p>
+      <%=f.label :Description%>
+      <%=f.text_area :du_description%>
+  </p>
+
 
           <%=f.fields_for :projects do |b|%>
            <%= render 'projects', :f =>b %>
           <%end%>
-          
-          <center>
-           <button type="sumbit" value='save' data-disable-with="save" class="btn btn-primary">Save</button>
-         <center>
 
-
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
+  <%= f.submit "Save", class: "btn btn-primary" %>
+<%end%>

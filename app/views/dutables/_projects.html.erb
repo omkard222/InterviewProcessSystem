@@ -7,7 +7,3 @@
 <%= f.label :pro_description, "Project Description" %>
 <%= f.text_area :pro_description %>
 </p>
-
-<%= f.fields_for :requirements do |b|%>
- <%= render 'requirements', :f =>b %>
-<%end%>
