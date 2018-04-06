@@ -1,7 +1,7 @@
 <% @dutables.each do |d| %>
   <strong><%=d.du_name %></strong>
     <%for project in d.projects%>
-        <li><a href=""><%=h project.project_name%></a></li>
+        <li><a href="<%=projects_url(project)%>"><%=h project.project_name%></a></li>
 
 
   <%end%>
