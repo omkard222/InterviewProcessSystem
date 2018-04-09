@@ -33,7 +33,7 @@ class DutablesController < ApplicationController
     respond_to do |format|
       if @dutable.save
 
-        format.html { redirect_to @dutable}
+        format.html { redirect_to @dutable,notice: 'Delivery Unit Cell created' }
         format.json { render :show, status: :created, location: @dutable }
       else
 
@@ -44,23 +44,23 @@ class DutablesController < ApplicationController
   end
 
   def update
+    @dutable = Dutable.find(params[:id])
+    respond_to do |format|
+    if @dutable.update(dutable_params)
+      format.html { redirect_to @dutable,notice: 'Updated Successfully' }
 
-      if @dutable.update(dutable_params)
-      redirect_to @dutable
 
-      else
-        render :edit
+    else
+      render :edit
 
-      end
-    
+    end
   end
 
+  end
 
-  # DELETE /requirements/1
-  # DELETE /requirements/1.json
   def destroy
-    @dutable.destroy
-    respond_to do |format|
+    Dutable.find(params[:id]).destroy
+      respond_to do |format|
       format.html { redirect_to dutable_url, notice: 'Requirement was successfully destroyed.' }
       format.json { head :no_content }
     end
@@ -68,7 +68,7 @@ class DutablesController < ApplicationController
 
   private
 
-    def dutable_params
-      params.require(:dutable).permit(:du_name, :du_id_code, :du_description, projects_attributes: [:id, :project_name, :pro_idcode, :pro_description, :_destroy] )
-    end
+  def dutable_params
+    params.require(:dutable).permit(:du_name, :du_id_code, :du_description, projects_attributes: [:id, :project_name, :pro_idcode, :pro_description, :_destroy] )
+  end
 end

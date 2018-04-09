@@ -1,12 +1,27 @@
 
-<strong><%=h @dutable.du_name %>
-</strong>
+    <h1><%=h @dutable.du_name %></h1>
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>Projects</th>
+          <th></th>
 
-        <ol>
-          <%for project in @dutable.projects%>
-              <li> <%= project.project_name%></li>
 
 
-          <%end%>
-        </ol>
-  <%= link_to 'Edit', edit_dutable_path%>
+        </tr>
+      </thead>
+      <tbody>
+      <%for project in @dutable.projects%>
+          <tr>
+            <td>
+              <%= project.project_name%>
+            </td>
+            <td>
+            <%= link_to 'Details', project_path(project), class:'btn btn-info'%>
+            </td>
+
+
+
+        <% end %>
+      </tbody>
+    </table>

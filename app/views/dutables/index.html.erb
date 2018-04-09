@@ -1,12 +1,14 @@
 
 
-  <h1>Listing Delivery Units</h1>
+  <h1>List of Delivery Units</h1>
   <table class="table table-bordered table-hover">
     <thead>
       <tr>
         <th>DU_Name</th>
+        <th>Du Code</th>
         <th></th>
         <th></th>
+
       </tr>
     </thead>
     <tbody>
@@ -16,7 +18,13 @@
             <%= d.du_name %>
           </td>
           <td>
-          <%= link_to 'edit',  edit_dutable_path(d)%>
+            <%= d.du_id_code %>
+          </td>
+          <td>
+          <%= link_to 'Details', dutable_path(d), class:'btn btn-info'%>
+          </td>
+          <td>
+          <%= link_to 'Add Project',  edit_dutable_path(d), class: 'class="ace-icon fa fa-wrench  bigger-110 icon-only btn btn-warning btn-xm"'%>
           </td>
 
 

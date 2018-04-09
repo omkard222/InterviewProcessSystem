@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180406084248) do
+ActiveRecord::Schema.define(version: 20180409094930) do
 
   create_table "candidates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "first_name"
@@ -78,6 +78,9 @@ ActiveRecord::Schema.define(version: 20180406084248) do
     t.datetime "updated_at", null: false
     t.bigint "project_id"
     t.string "description"
+    t.string "opportunityID"
+    t.string "job_description"
+    t.string "job_summary"
     t.index ["project_id"], name: "index_requirements_on_project_id"
   end
 

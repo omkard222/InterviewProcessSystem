@@ -3,15 +3,15 @@
 </p>
 <p>
 
-  <b>Project Id Code</b>
-  <%= @project.pro_idcode %>
+  <b>Project Name:</b>
+  <%= @project.project_name %>
 </p>
 <p>
   <b>Description</b>
   <%= @project.pro_description%>
 </p>
 
-<%= link_to 'Add Requirement', new_requirement_path(project_id: @project.id)%>
+<%= link_to 'Add Requirement', new_requirement_path(project_id: @project.id), class: 'btn btn-primary'%>
 
 
 <%= link_to 'Back', dutables_path %>

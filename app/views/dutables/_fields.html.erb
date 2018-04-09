@@ -2,23 +2,24 @@
 <% if !@dutable.persisted? %>
   <p>
       <%=f.label :DU_Name%>
-      <%=f.text_field :du_name%>
+      <input type="text" name="dutable[du_name]" id="dutable_du_name" required>
   </p>
   <p>
       <%=f.label :DU_Code%>
-      <%=f.text_field :du_id_code%>
+      <input type="text" name="dutable[du_id_code]" id="dutable_du_id_code" required>
   </p>
   <p>
       <%=f.label :Description%>
-      <%=f.text_area :du_description%>
+      <textarea name="dutable[du_description]" id="dutable_du_description" required></textarea>
   </p>
 <%end%>
 <table class = 'table'>
   <thead>
     <tr>
       <th> Project Name </th>
-      <th>Project Id</th>
+      <th>Project Code</th>
       <th> Description </th>
+        <th></th>
     </tr>
   </thead>
 
@@ -30,12 +31,13 @@
   </tbody>
 
 </table>
-
-
+<center>
+<%= link_to_add_association 'Add project', f , :projects , class: "btn btn-success",
+ data: {association_insertion_node: '.tasks', association_insertion_method: :append}%>
+<center>
 <div class ='form-actions'>
 
   <%= f.submit "Save", class: "btn btn-primary" %>
-  <%= link_to_add_association 'add project', f , :projects , class: 'btn btn-danger',
-   data: {association_insertion_node: '.tasks', association_insertion_method: :append}%>
+
 </div>
 <%end%>

@@ -3,14 +3,18 @@
 <tr class = "nested-fields">
 <td>
 
-<%= f.text_field :project_name %>
+<input type="text" name="dutable[projects_attributes][0][project_name]" id="dutable_projects_attributes_0_project_name" required>
 </td>
 <td>
 
-<%= f.text_field :pro_idcode %>
+<input type="text" name="dutable[projects_attributes][0][pro_idcode]" id="dutable_projects_attributes_0_pro_idcode" required>
 </td>
 <td>
 
-<%= f.text_area :pro_description %>
+<textarea name="dutable[projects_attributes][0][pro_description]" id="dutable_projects_attributes_0_pro_description" required></textarea>
+</td>
+<td>
+<%= link_to_remove_association "Remove", f %>
+
 </td>
 </tr>
