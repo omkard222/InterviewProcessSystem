@@ -1,5 +1,5 @@
 class DutablesController < ApplicationController
-  before_action :set_dutable, only: [:show, :edit, :update, :destroy]
+
 
   # GET /requirements
   # GET /requirements.json
@@ -14,20 +14,20 @@ class DutablesController < ApplicationController
     @dutable = Dutable.find(params[:id])
   end
 
-  # GET /requirements/new
+
   def new
     @dutable = Dutable.new
     @project = @dutable.projects.build
-    
+
 
   end
 
-  # GET /requirements/1/edit
+
   def edit
+    @dutable = Dutable.find(params[:id])
   end
 
-  # POST /requirements
-  # POST /requirements.json
+
   def create
     @dutable = Dutable.new(dutable_params)
     respond_to do |format|
@@ -43,8 +43,17 @@ class DutablesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /requirements/1
-  # PATCH/PUT /requirements/1.json
+  def update
+
+      if @dutable.update(dutable_params)
+      redirect_to @dutable
+
+      else
+        render :edit
+
+      end
+    
+  end
 
 
   # DELETE /requirements/1
@@ -58,12 +67,7 @@ class DutablesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_dutable
-      @dutable = Dutable.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def dutable_params
       params.require(:dutable).permit(:du_name, :du_id_code, :du_description, projects_attributes: [:id, :project_name, :pro_idcode, :pro_description, :_destroy] )
     end

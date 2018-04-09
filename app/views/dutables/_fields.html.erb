@@ -1,0 +1,41 @@
+<%=form_for @dutable do |f| %>
+<% if !@dutable.persisted? %>
+  <p>
+      <%=f.label :DU_Name%>
+      <%=f.text_field :du_name%>
+  </p>
+  <p>
+      <%=f.label :DU_Code%>
+      <%=f.text_field :du_id_code%>
+  </p>
+  <p>
+      <%=f.label :Description%>
+      <%=f.text_area :du_description%>
+  </p>
+<%end%>
+<table class = 'table'>
+  <thead>
+    <tr>
+      <th> Project Name </th>
+      <th>Project Id</th>
+      <th> Description </th>
+    </tr>
+  </thead>
+
+  <tbody class ='tasks'>
+    <%=f.fields_for :projects do |b|%>
+     <%= render 'project_fields', :f =>b %>
+    <%end%>
+
+  </tbody>
+
+</table>
+
+
+<div class ='form-actions'>
+
+  <%= f.submit "Save", class: "btn btn-primary" %>
+  <%= link_to_add_association 'add project', f , :projects , class: 'btn btn-danger',
+   data: {association_insertion_node: '.tasks', association_insertion_method: :append}%>
+</div>
+<%end%>

@@ -1,8 +1,25 @@
-<% @dutables.each do |d| %>
-  <strong><%=d.du_name %></strong>
-    <%for project in d.projects%>
-        <li><a href="<%=projects_url(project)%>"><%=h project.project_name%></a></li>
 
 
-  <%end%>
-  <%end%>
+  <h1>Listing Delivery Units</h1>
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>DU_Name</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @dutables.each do |d| %>
+        <tr>
+          <td>
+            <%= d.du_name %>
+          </td>
+          <td>
+          <%= link_to 'edit',  edit_dutable_path(d)%>
+          </td>
+
+
+      <% end %>
+    </tbody>
+  </table>
