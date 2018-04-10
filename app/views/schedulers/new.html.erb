@@ -43,7 +43,8 @@
                     <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Inteviewer</label>
                       <div class="col-sm-9">
-                    <%= f.select :employee_id, Employee.get_employees_from_requirements(@requirement).collect{ |e| [e.full_name, e.id]} %>
+                    <!-- <%= f.select :employee_id, Employee.get_employees_from_requirements(@requirement).collect{ |e| [e.full_name, e.id]} %> -->
+                      <%= f.select :employee_id, Employee.all.collect{ |e| [e.full_name, e.id]} %>
                   </div>
                   </div>
 
