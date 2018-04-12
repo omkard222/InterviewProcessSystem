@@ -3,7 +3,7 @@
   <thead>
     <tr>
       <th>Position</th>
-      <th>Skills</th>
+
       <th>Experience</th>
 
       <th>Qualification</th>
@@ -21,9 +21,7 @@
         <td>
           <%= requirement.position %>
         </td>
-        <td>
-          <%= get_skills(requirement).pluck(:name).join(", ") %>
-        </td>
+
         <td>
           <%= requirement.experience %>
         </td>

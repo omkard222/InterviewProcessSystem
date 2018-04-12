@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180409094930) do
+ActiveRecord::Schema.define(version: 20180411074043) do
 
   create_table "candidates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "first_name"
@@ -85,14 +85,14 @@ ActiveRecord::Schema.define(version: 20180409094930) do
   end
 
   create_table "schedulers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.time "start_time"
-    t.time "end_time"
     t.date "interview_date"
     t.bigint "candidate_id"
     t.bigint "employee_id"
     t.bigint "requirement_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "start_time"
+    t.string "end_time"
     t.index ["candidate_id"], name: "index_schedulers_on_candidate_id"
     t.index ["employee_id"], name: "index_schedulers_on_employee_id"
     t.index ["requirement_id"], name: "index_schedulers_on_requirement_id"

@@ -21,3 +21,5 @@
 //= require spinbox.min.js
 //= require jquery.magnific-popup.js
 //= require cocoon
+//= require bootstrap-timepicker.min.js
+//= require bootstrap-datetimepicker.min.js
