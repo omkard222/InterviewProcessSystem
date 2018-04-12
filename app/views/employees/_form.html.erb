@@ -44,7 +44,13 @@ Employee Details
 
   <div class="field">
     <label>Skill</label>
-    <%= f.select :skill_id, Skill.pluck(:name, :id), selected: @employee.employee_requirement_skills.pluck(:skill_id).last%>
+    <select name="employee[skill_id]" id="employee_skill_id" required>
+        <option value="1">Java</option>
+        <option value="2">Front End</option>
+        <option value="3">Dot Net</option>
+        <option value="4">Ruby On Rails</option>
+
+    </select>
   </div>
 
 

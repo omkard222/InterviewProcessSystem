@@ -17,7 +17,7 @@ class RequirementsController < ApplicationController
   # GET /requirements/new
   def new
     @project = Project.find(params[:project_id])
-    @requirement = @project.requirements.new
+    @requirement = @project.requirements.build
 
   end
 
@@ -75,6 +75,6 @@ class RequirementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def requirement_params
-      params.require(:requirement).permit(:position, :skills, :experience,:qualification, :opportunityID, :skill_id, :project_id)
+       params.require(:requirement).permit(:position, :skills, :experience,:qualification, :opportunityID, :skill_id, :project_id, :job_description, :job_summary)
     end
 end

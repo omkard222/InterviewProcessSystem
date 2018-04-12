@@ -19,6 +19,17 @@
   <b>Qualification:</b>
   <%= @requirement.qualification %>
 </p>
+
+<p>
+  <b>Job Description:</b>
+  <%= @requirement.job_description %>
+</p>
+
+<p>
+  <b>Job Summary:</b>
+  <%= @requirement.job_summary %>
+</p>
+
 <%= link_to 'Edit', edit_requirement_path(@requirement) %>
 |
 <%= link_to 'Back', requirements_path %>

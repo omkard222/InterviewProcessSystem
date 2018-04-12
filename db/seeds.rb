@@ -46,6 +46,6 @@
 # end
 5.times do |n|
   Skill.create(
-    name: ["Ruby On Rails","Java","Dot Net", "DBMS", "Front End"].shuffle.first,
+    name: ["Ruby On Rails","Java","Dot Net", "DBMS", "Front End"]
     status: true)
   end

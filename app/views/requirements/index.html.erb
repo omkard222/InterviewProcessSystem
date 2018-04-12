@@ -3,7 +3,7 @@
   <thead>
     <tr>
       <th>Position</th>
-      <th>Skills</th>
+
       <th>Experience</th>
 
       <th>Qualification</th>
@@ -21,9 +21,7 @@
         <td>
           <%= requirement.position %>
         </td>
-        <td>
-          <%= get_skills(requirement).pluck(:name).join(", ") %>
-        </td>
+        
         <td>
           <%= requirement.experience %>
         </td>
@@ -38,14 +36,14 @@
           <%= link_to 'Show', requirement %>
         </td>
         <td>
-          <%= link_to 'Edit', edit_requirement_path(requirement) %>
+          <%= link_to 'Edit', edit_requirement_path(requirement) ,class: 'ace-icon fa fa-pencil-square-o bigger-160' %>
         </td>
         <td>
-          <%= link_to 'Delete', requirement, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'Delete', requirement, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-white btn-warning btn-bold' 'ace-icon fa fa-trash-o bigger-120 orange' %>
         </td>
 
         <td>
-          <%= link_to 'details', requirement_candidates_path(requirement) %>
+          <%= link_to 'details', requirement_candidates_path(requirement), class:'btn btn-info'%>
         </td>
       </tr>
     <% end %>

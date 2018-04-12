@@ -11,6 +11,40 @@
   <%= @project.pro_description%>
 </p>
 
+<table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>Designation</th>
+          <th>Year of Experiance</th>
+          <th>Qualification</th>
+          <th></th>
+
+
+        </tr>
+      </thead>
+      <tbody>
+      <%for requirement in @project.requirements%>
+          <tr>
+            <td>
+              <%= requirement.position%>
+            </td>
+            <td>
+              <%= requirement.experience%>
+            </td>
+            <td>
+              <%= requirement.qualification%>
+            </td>
+
+            <td>
+              <%= link_to 'details', requirement_candidates_path(requirement), class:'btn btn-info'%>
+            </td>
+
+
+        <% end %>
+      </tbody>
+    </table>
+
+
 <%= link_to 'Add Requirement', new_requirement_path(project_id: @project.id), class: 'btn btn-primary'%>
 
 
