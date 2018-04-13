@@ -78,7 +78,7 @@ class RequirementsController < ApplicationController
 
       params.require(:requirement).permit(:position, :skills, :experience,:qualification, :opportunityID, :skill_id, :project_id, :job_description, :job_summary)
 
-       params.require(:requirement).permit(:position, :skills, :experience,:qualification, :opportunityID, :skill_id, :project_id, :job_description, :job_summary)
+      
 
     end
 end

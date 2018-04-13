@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  stage_name: MyString
+  status: MyString
+  duration_of_interview: MyString
+  comments: MyString
+  communication: MyString
+  attitude: MyString
+  learning_capabilties: MyString
+  Tech_analysis: MyString
+
+two:
+  stage_name: MyString
+  status: MyString
+  duration_of_interview: MyString
+  comments: MyString
+  communication: MyString
+  attitude: MyString
+  learning_capabilties: MyString
+  Tech_analysis: MyString

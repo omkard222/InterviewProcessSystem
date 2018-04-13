@@ -1,4 +1,4 @@
-<center><h1>List of Requirements</h1><center>
+<center><h1>Requirements</h1><center>
 <table class="table table-bordered table-hover " >
   <thead class="table-header">
     <tr>
@@ -10,7 +10,6 @@
       <th>Qualification</th>
       <th>Project Name</th>
       <th>Add Candidate</th>
-      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -42,12 +41,10 @@
           <%= link_to 'Show', requirement , class: 'fa fa-eye'%>
         </td>
         <td>
-          <%= link_to 'Edit', edit_requirement_path(requirement), class: 'ace-icon fa fa-pencil-square-o bigger-160' %>
+          <%= link_to 'Edit', edit_requirement_path(requirement), class: 'ace-icon fa fa-pencil-square-o bigger-120' %>
         </td>
         <td>
-          <%= link_to 'Delete', requirement, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-white btn-warning btn-bold' 'ace-icon fa fa-trash-o bigger-120 orange' %>
-
-
+          <%= link_to 'Delete', requirement, method: :delete, data: { confirm: 'Are you sure?' }, class:  'ace-icon fa fa-trash-o bigger-120 orange' %>
         </td>
 
         <td>

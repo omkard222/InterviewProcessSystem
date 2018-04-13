@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :employees
   resources :dutables
   resources :projects
-
+  resources :feedbacks
 
   resources :requirements do
     resources :candidates do

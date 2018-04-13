@@ -1,6 +1,6 @@
-<h1>
-Employee Details
-</h1><%= form_for @employee do |f| %>
+<div class = "row">
+  <div class ="col-md-6 col-md-offset-3 form-horizontal">
+<%= form_for @employee, html: {class: "form-horizontal"} do |f| %>
   <% if @employee.errors.any? %>
     <div id="error_explanation">
       <h2>
@@ -15,46 +15,67 @@ Employee Details
       </ul>
     </div>
   <% end %>
-  <div class="field">
-    <%= f.label :First_Name %>
-    <%= f.text_field :emp_firstname %>
-  </div>
-  <div class="field">
-    <%= f.label :Last_Name %>
-    <%= f.text_field :emp_lastname %>
-  </div>
-  <div class="field">
-    <%= f.label :Employee_Id %>
-    <%= f.text_field :emp_id %>
+
+
+  <div class="form-group">
+    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">First Name</label>
+    <div class="col-sm-9">
+    <input class="col-xs-10 col-sm-5" type="text" name="employee[emp_firstname]" id="employee_emp_firstname" class="col-xs col-sm-5" required>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :Designation %>
-    <%= f.text_field :emp_designation %>
-  </div>
-  <div class="field">
-    <%= f.label :Email_Id %>
-    <%= f.text_field :emp_mail %>
+  <div class="form-group">
+    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Last Name</label>
+    <div class="col-sm-9">
+    <input class="col-xs-10 col-sm-5" type="text" name="employee[emp_lastname]" id="employee_emp_lastname" class="col-xs col-sm-5" required>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :Phone_No %>
-    <%= f.text_field :emp_phone %>
+  <div class="form-group">
+    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Employee ID</label>
+    <div class="col-sm-9">
+    <input class="col-xs-10 col-sm-5" type="text" name="employee[emp_id]" id="employee_emp_id" class="col-xs col-sm-5" required>
+    </div>
   </div>
 
-  <div class="field">
-    <label>Skill</label>
-    <select name="employee[skill_id]" id="employee_skill_id" required>
-        <option value="1">Java</option>
-        <option value="2">Front End</option>
-        <option value="3">Dot Net</option>
-        <option value="4">Ruby On Rails</option>
+  <div class="form-group">
+    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Designatiom</label>
+    <div class="col-sm-9">
+    <input class="col-xs-10 col-sm-5" type="text" name="employee[emp_designation]" id="employee_emp_designation" class="col-xs col-sm-5" required>
+    </div>
+  </div>
 
-    </select>
+  <div class="form-group">
+    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Email ID</label>
+    <div class="col-sm-9">
+    <input class="col-xs-10 col-sm-5" type="text" name="employee[emp_mail]" id="employee_emp_mail" class="col-xs col-sm-5" required>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Phone No</label>
+    <div class="col-sm-9">
+    <input class="col-xs-10 col-sm-5" type="text" name="employee[emp_phone]" id="employee_emp_phone" class="col-xs col-sm-5" required>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Skill</label>
+    <div class="col-sm-9">
+      <select name="employee[skill_id]" id="employee_skill_id" required>
+          <option value="1">Java</option>
+          <option value="2">Front End</option>
+          <option value="3">Dot Net</option>
+          <option value="4">Ruby On Rails</option>
+        </select>
+    </div>
   </div>
 
 
   <div class="actions">
-    <%= f.submit 'Save' %>
+    <%= f.submit 'Save' , class: "btn btn-primary" %>
   </div>
+
 <% end %>
+</div>
+</div>
