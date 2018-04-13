@@ -1,7 +1,7 @@
 class Candidate < ApplicationRecord
   belongs_to :requirement
   mount_uploader :resume
-  has_many :schedulers
+  has_many :schedulers, dependent: :destroy
 
   validates :resume, presence: true
 

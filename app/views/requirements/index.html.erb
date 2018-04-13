@@ -1,12 +1,14 @@
-<h1>List of requirements</h1>
-<table class="table table-bordered table-hover">
-  <thead>
+<center><h1>List of Requirements</h1><center>
+<table class="table table-bordered table-hover " >
+  <thead class="table-header">
     <tr>
       <th>Position</th>
+      <th>Status</th>
 
       <th>Experience</th>
 
       <th>Qualification</th>
+      <th>Project Name</th>
       <th>Add Candidate</th>
       <th></th>
       <th></th>
@@ -17,11 +19,15 @@
   </thead>
   <tbody>
     <% @requirements.each do |requirement| %>
+
       <tr>
         <td>
           <%= requirement.position %>
         </td>
-        
+        <td>
+          <%= requirement.status %>
+        </td>
+
         <td>
           <%= requirement.experience %>
         </td>
@@ -30,16 +36,19 @@
           <%= requirement.qualification %>
         </td>
         <td>
-          <%= link_to 'new', new_requirement_candidate_path(requirement) %>
+          <%= requirement.project.project_name %>
         </td>
         <td>
-          <%= link_to 'Show', requirement %>
+          <%= link_to 'New', new_requirement_candidate_path(requirement) %>
         </td>
         <td>
-          <%= link_to 'Edit', edit_requirement_path(requirement) ,class: 'ace-icon fa fa-pencil-square-o bigger-160' %>
+          <%= link_to 'Show', requirement , class: 'fa fa-eye'%>
         </td>
         <td>
-          <%= link_to 'Delete', requirement, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-white btn-warning btn-bold' 'ace-icon fa fa-trash-o bigger-120 orange' %>
+          <%= link_to 'Edit', edit_requirement_path(requirement) ,class: 'ace-icon fa fa-pencil-square-o bigger-100' %>
+        </td>
+        <td>
+          <%= link_to 'Delete', requirement, method: :delete, data: { confirm: 'Are you sure?' }, class: 'ace-icon fa fa-trash-o  bigger-100 orange' %>
         </td>
 
         <td>
