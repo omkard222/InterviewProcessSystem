@@ -4,8 +4,9 @@
   <table class="table table-bordered table-hover">
     <thead>
       <tr>
-        <th>DU_Name</th>
-        <th>Du Code</th>
+        <th>Delivery Unit Name</th>
+
+        <th>No of Projects</th>
         <th></th>
         <th></th>
 
@@ -18,7 +19,7 @@
             <%= d.du_name %>
           </td>
           <td>
-            <%= d.du_id_code %>
+            <%= d.projects.count %>
           </td>
           <td>
           <%= link_to 'Details', dutable_path(d), class:'btn btn-info'%>

@@ -7,7 +7,7 @@
       <span class="icon-bar"></span>
     </button>
     <div class="navbar-header pull-left">
-      <a class="navbar-brand" href="index.html">
+      <a class="navbar-brand" href="<%=users_index_path%>">
         <small>
           <i class="fa fa-leaf"></i>
           Infogain
@@ -22,7 +22,7 @@
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">
             <%= image_tag("user.jpg", class: "nav-user-photo") %>
             <span class="user-info">
-              <small>Welcome</small>
+              <small>Hi, <%=current_user.email%></small>
 
             </span>
             <i class="ace-icon fa fa-caret-down"></i>

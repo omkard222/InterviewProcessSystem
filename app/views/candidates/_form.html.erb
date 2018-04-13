@@ -1,6 +1,6 @@
 <div class = "row">
-  <div class ="col-md-6 col-md-offset-3">
-        <%= form_for [@requirement, @candidate] do |f| %>
+  <div class ="col-md-6 col-md-offset-3 form-horizontal">
+        <%= form_for  [@requirement, @candidate] do |f| %>
   <% if @candidate.errors.any? %>
     <div id="error_explanation">
       <h2>
@@ -18,30 +18,40 @@
 
 
 
-  <div class="field">
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name %>
+  <div class="form-group">
+    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">First Name:</label>
+    <input type="text" id="form-field-1" placeholder="firstname" name="candidate[first_name]" class="col-xs col-sm-5" required>
+
   </div>
-  <div class="field">
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
+
+  <div class="form-group">
+    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Last Name:</label>
+    <input type="text" id="form-field-1" placeholder="lastname" name="candidate[last_name]" class="col-xs col-sm-5" required>
+
   </div>
-  <div class="field">
-    <%= f.label :contact %>
-    <input type="tel"  pattern="^\d{10}$" name="candidate[contact]" id="candidate_contact" required>
+
+  <div class="form-group">
+    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Phone No:</label>
+    <input type="tel" id="form-field-1" placeholder="phone no" name="candidate[contact]" class="col-xs col-sm-5" required>
+
   </div>
-  <div class="field">
-    <%= f.label :email %>
-    <input type="email" name="candidate[email]" id="candidate_email" required>
+
+  <div class="form-group">
+      <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Email:</label>
+    <input type="email" name="candidate[email]" placeholder="email" id="candidate_email" class="col-xs col-sm-5" required>
   </div>
-  <div>
-  <%= f.label :resume %><br>
-  <%= f.file_field :resume %>
+
+
+  <div  class="form-group">
+      <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Candidate Resume:</label>
+
+      <%=f.file_field :resume%>
   </div>
 
   <div class="actions" >
     <%= f.submit 'Save' , class: "btn btn-primary" %>
   </div>
+  <center>
 <% end %>
 </div>
 </div>

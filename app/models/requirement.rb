@@ -1,6 +1,6 @@
 class Requirement < ApplicationRecord
-  has_many :candidates
-  has_one :scheduler
+  has_many :candidates, dependent: :destroy
+  has_one :scheduler, dependent: :destroy
   has_many :employee_requirement_skills, as: :employee_requirement_skillable
   belongs_to :project
 

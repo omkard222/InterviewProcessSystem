@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180411074043) do
+ActiveRecord::Schema.define(version: 20180413062021) do
 
   create_table "candidates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "first_name"
@@ -45,7 +45,6 @@ ActiveRecord::Schema.define(version: 20180411074043) do
     t.string "emp_lastname"
     t.integer "emp_id"
     t.string "emp_designation"
-    t.string "emp_skills"
     t.string "emp_mail"
     t.string "emp_phone"
     t.datetime "created_at", null: false
@@ -81,6 +80,7 @@ ActiveRecord::Schema.define(version: 20180411074043) do
     t.string "opportunityID"
     t.string "job_description"
     t.string "job_summary"
+    t.string "status"
     t.index ["project_id"], name: "index_requirements_on_project_id"
   end
 

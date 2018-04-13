@@ -75,10 +75,10 @@ class RequirementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def requirement_params
-<<<<<<< HEAD
+
       params.require(:requirement).permit(:position, :skills, :experience,:qualification, :opportunityID, :skill_id, :project_id, :job_description, :job_summary)
-=======
+
        params.require(:requirement).permit(:position, :skills, :experience,:qualification, :opportunityID, :skill_id, :project_id, :job_description, :job_summary)
->>>>>>> 18035004aaebfb607f76b5ab1eb4b5ba4e20da8d
+
     end
 end
