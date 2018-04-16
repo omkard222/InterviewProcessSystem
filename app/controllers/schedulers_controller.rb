@@ -1,11 +1,14 @@
 class SchedulersController < ApplicationController
-
+  def index
+    @schedulers = Scheduler.all
+  end
   def new
     @requirement = Requirement.find(params[:requirement_id])
     @candidate = Candidate.find(params[:candidate_id])
     @scheduler = @candidate.schedulers.build
 
   end
+
 
   def show
     @scheduler= Scheduler.find(params[:id])

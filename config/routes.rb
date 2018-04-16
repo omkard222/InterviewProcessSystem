@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   resources :dutables
   resources :projects
   resources :feedbacks
+  resources :schedulers do
+    resources :feedbacks
+  end
 
   resources :requirements do
     resources :candidates do

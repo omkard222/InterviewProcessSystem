@@ -1,21 +1,26 @@
 class FeedbacksController < ApplicationController
   def index
+    @scheduler = Requirement.find(params[:scheduler_id])
+    @feedbacks = @scheduler.feedbacks
   end
   def new
-      @feedback = Feedback.new
+      @scheduler = Scheduler.find(params[:scheduler_id])
+      @feedback = @scheduler.feedbacks.new
   end
 
   def create
-    @feedback = Feedback.new(feedback_params)
+    @scheduler = Scheduler.find(params[:scheduler_id])
+    @feedback = @scheduler.feedbacks.new(feedback_params)
     respond_to do |format|
       if @feedback.save
-        format.html { redirect_to @feedback, notice: 'Feedback was successfully created.' }
+        format.html { redirect_to [@scheduler, @feedback], notice: 'Feedback was successfully created.' }
       else
         format.html { render :new }
       end
     end
   end
   def show
+
     @feedback = Feedback.find(params[:id])
   end
 
@@ -28,6 +33,6 @@ class FeedbacksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def feedback_params
-      params.require(:feedback).permit(:stage_name, :status, :duration_of_interview,:comments, :communication, :attitude, :learning_capabilties, :Tech_analysis)
+      params.require(:feedback).permit(:scheduler_id, :stage_name, :status, :duration_of_interview,:comments, :communication, :attitude, :learning_capabilties, :Tech_analysis)
     end
 end
