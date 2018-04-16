@@ -1,11 +1,14 @@
 class SchedulersController < ApplicationController
-
+  def index
+    @schedulers = Scheduler.all
+  end
   def new
     @requirement = Requirement.find(params[:requirement_id])
     @candidate = Candidate.find(params[:candidate_id])
-    # debugger
-    @scheduler = @candidate.build_scheduler
+    @scheduler = @candidate.schedulers.build
+
   end
+
 
   def show
     @scheduler= Scheduler.find(params[:id])
@@ -14,19 +17,38 @@ class SchedulersController < ApplicationController
   def create
     @requirement = Requirement.find(params[:requirement_id])
     @candidate = Candidate.find(params[:candidate_id])
-    @scheduler = @candidate.build_scheduler(schedulers_params)
+    @scheduler =  @candidate.schedulers.new(schedulers_params)
     @scheduler.requirement_id = params[:requirement_id]
+    @alreadyschedule = Scheduler.all
+
+    @alreadyschedule.each do |a|
 
     respond_to do |format|
-      if @scheduler.save
-        format.html {redirect_to @scheduler, notice: 'Interview Schedule successfully' }
+      if @scheduler.candidate_id == a.candidate_id
+          format.html {redirect_to @scheduler, notice: 'Already Interview Schedule' }
 
       else
-        format.html {render :new }
+        @scheduler.save
+        InterviewInfoMailer.candidate_information(@scheduler).deliver
+        format.html {render 'show', notice: 'Interview schedule' }
+      end
+        end
+
+      end
+  end
+
+  def update
+
+    respond_to do |format|
+      if @scheduler.update(schedulers_params)
+        format.html { redirect_to @scheduler , notice: 'Interview was successfully updated.' }
+        format.json { render :show, status: :ok, location: @scheduler }
+      else
+        format.html { render :edit }
+        format.json { render json: @scheduler.errors, status: :unprocessable_entity }
       end
     end
   end
-
   private
 
   # Never trust parameters from the scary internet, only allow the white list through.

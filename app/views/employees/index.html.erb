@@ -1,19 +1,46 @@
-<h1>Employee List</h1>
-<table class="table table-bordered table-hover">
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+
+<center><h1>Employees</h1></center>
+
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for skills.." title="Type in a name">
+<br>
+<table class="table table-bordered table-hover"  id="myTable">
   <thead>
-    <tr>
-      <th>Employee name</th>
+    <tr class="header">
+      <th>Skills</th>
+      <th>Employee Name</th>
       <th>Employee Id</th>
       <th>Designation</th>
-      <th>Skills</th>
-      <th>Phone No</th>
+
       <th>Email Id</th>
+      <th>Phone No</th>
 
     </tr>
   </thead>
   <tbody>
     <% @employee.each do |emp| %>
       <tr>
+        <td>
+          <%= get_skills(emp).pluck(:name).join(", ") %>
+        </td>
         <td>
           <%= emp.emp_firstname %>
         </td>
@@ -23,9 +50,7 @@
         <td>
           <%= emp.emp_designation  %>
         </td>
-        <td>
-          <%= get_skills(emp).pluck(:name).join(", ") %>
-        </td>
+
         <td>
           <%= emp.emp_mail  %>
         </td>

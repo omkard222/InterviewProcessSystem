@@ -1,5 +1,6 @@
-<p id="notice">
-  <%= notice %>
+<p>
+  <b>Opportunity ID:</b>
+  <%= @requirement.opportunityID %>
 </p>
 <p>
   <b>Position:</b>
@@ -13,13 +14,19 @@
   <b>Experience:</b>
   <%= @requirement.experience %>
 </p>
-<p>
-  <b>Salary:</b>
-  <%= @requirement.salary %>
-</p>
+
 <p>
   <b>Qualification:</b>
   <%= @requirement.qualification %>
+</p>
+<p>
+  <b>Job Description:</b>
+  <%= @requirement.job_description %>
+</p>
+
+<p>
+  <b>Job Summary:</b>
+  <%= @requirement.job_summary %>
 </p>
 <%= link_to 'Edit', edit_requirement_path(@requirement) %>
 |

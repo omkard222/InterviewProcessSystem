@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hi <%= @scheduler.employee.emp_firstname %></h1>
+    <p>
+      Here is information about the candidate
+    </p>
+    <p>
+      <b>Candidate Name</b>
+      <%= @scheduler.candidate.candidate_full_name %>
+    </p>
+    <p>
+      <b>Candidate ContactNo</b>
+      <%= @scheduler.candidate.contact%>
+    </p>
+    <p>
+      <b>Interview date:</b>
+      <%= @scheduler.interview_date%>
+    <p>
+      <b>Interview Start time</b>
+      <%= @scheduler.start_time %>
+    </p>
+    <p>
+      <b>Interview End time</b>
+      <%= @scheduler.end_time %>
+    </p>
+
+    <p><%= link_to "Download Resume", @scheduler.candidate.resume_url %></p>
+
+  </body>
+</html>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180403070925) do
+ActiveRecord::Schema.define(version: 20180413070650) do
 
   create_table "candidates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "first_name"
@@ -45,7 +45,6 @@ ActiveRecord::Schema.define(version: 20180403070925) do
     t.string "emp_lastname"
     t.integer "emp_id"
     t.string "emp_designation"
-    t.string "emp_skills"
     t.string "emp_mail"
     t.string "emp_phone"
     t.datetime "created_at", null: false
@@ -57,6 +56,21 @@ ActiveRecord::Schema.define(version: 20180403070925) do
     t.integer "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "feedbacks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "stage_name"
+    t.string "status"
+    t.string "duration_of_interview"
+    t.string "comments"
+    t.string "communication"
+    t.string "attitude"
+    t.string "learning_capabilties"
+    t.string "Tech_analysis"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "scheduler_id"
+    t.index ["scheduler_id"], name: "index_feedbacks_on_scheduler_id"
   end
 
   create_table "projects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -73,24 +87,27 @@ ActiveRecord::Schema.define(version: 20180403070925) do
     t.string "position"
     t.string "skills"
     t.integer "experience"
-    t.integer "salary"
     t.string "qualification"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "project_id"
     t.string "description"
+    t.string "opportunityID"
+    t.string "job_description"
+    t.string "job_summary"
+    t.string "status"
     t.index ["project_id"], name: "index_requirements_on_project_id"
   end
 
   create_table "schedulers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.time "start_time"
-    t.time "end_time"
     t.date "interview_date"
     t.bigint "candidate_id"
     t.bigint "employee_id"
     t.bigint "requirement_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "start_time"
+    t.string "end_time"
     t.index ["candidate_id"], name: "index_schedulers_on_candidate_id"
     t.index ["employee_id"], name: "index_schedulers_on_employee_id"
     t.index ["requirement_id"], name: "index_schedulers_on_requirement_id"
@@ -121,6 +138,7 @@ ActiveRecord::Schema.define(version: 20180403070925) do
   end
 
   add_foreign_key "candidates", "requirements"
+  add_foreign_key "feedbacks", "schedulers"
   add_foreign_key "projects", "dutables"
   add_foreign_key "requirements", "projects"
   add_foreign_key "schedulers", "candidates"

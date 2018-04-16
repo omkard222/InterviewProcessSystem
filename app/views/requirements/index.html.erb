@@ -1,58 +1,57 @@
-<h1>Listing requirements</h1>
-<table class="table table-bordered table-hover">
-  <thead>
+<center><h1>Requirements</h1><center>
+<table class="table table-bordered table-hover " >
+  <thead class="table-header">
     <tr>
       <th>Position</th>
-      <th>Skills</th>
+      <th>Status</th>
+
       <th>Experience</th>
-      <th>Salary</th>
+
       <th>Qualification</th>
+      <th>Project Name</th>
       <th>Add Candidate</th>
       <th></th>
       <th></th>
       <th></th>
-      <th></th>
-    
+
     </tr>
   </thead>
   <tbody>
     <% @requirements.each do |requirement| %>
+
       <tr>
         <td>
           <%= requirement.position %>
         </td>
-        <td>
-          <%= get_skills(requirement).pluck(:name).join(", ") %>
-        </td>
+
         <td>
           <%= requirement.experience %>
         </td>
-        <td>
-          <%= requirement.salary %>
-        </td>
+
         <td>
           <%= requirement.qualification %>
         </td>
         <td>
-          <%= link_to 'new', new_requirement_candidate_path(requirement) %>
+          <%= requirement.project.project_name %>
         </td>
         <td>
-          <%= link_to 'Show', requirement %>
+          <%= link_to 'New', new_requirement_candidate_path(requirement) %>
         </td>
         <td>
-          <%= link_to 'Edit', edit_requirement_path(requirement) %>
+          <%= link_to 'Show', requirement , class: 'fa fa-eye'%>
         </td>
         <td>
-          <%= link_to 'Delete', requirement, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'Edit', edit_requirement_path(requirement), class: 'ace-icon fa fa-pencil-square-o bigger-120' %>
+        </td>
+        <td>
+          <%= link_to 'Delete', requirement, method: :delete, data: { confirm: 'Are you sure?' }, class:  'ace-icon fa fa-trash-o bigger-120 orange' %>
         </td>
 
         <td>
-          <%= link_to 'details', requirement_candidates_path(requirement) %>
+          <%= link_to 'details', requirement_candidates_path(requirement), class:'btn btn-info' %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 <br/>
-  <%= link_to 'New Requirement', new_requirement_path %>
-    <%= link_to 'Add new Employee', new_employee_path %>

@@ -4,7 +4,7 @@
 
         <li class="">
           <a href="#" class="dropdown-toggle">
-            <i class="menu-icon fa fa-caret-right"></i>
+            <i class="ace-icon glyphicon glyphicon-asterisk"></i>
               Requirements
 
             <b class="arrow fa fa-angle-down"></b>
@@ -12,30 +12,24 @@
 
           <b class="arrow"></b>
 
-          <ul class="submenu">
+            <ul class="submenu">
+
             <li class="">
               <a href="<%=requirements_path %>">
-                <i class="menu-icon fa fa-caret-right"></i>
+                <i class="ace-icon glyphicon glyphicon-list"></i>
                   Requirement List
               </a>
 
               <b class="arrow"></b>
             </li>
 
-            <li class="">
-              <a href="<%= new_requirement_path %>">
-                <i class="menu-icon fa fa-caret-right"></i>
-                Add Requirment
-              </a>
 
-              <b class="arrow"></b>
-            </li>
 
           </ul>
         </li>
         <li class="">
           <a href="#" class="dropdown-toggle">
-            <i class="menu-icon fa fa-caret-right"></i>
+            <i class="ace-icon fa fa-users"></i>
             Employees
 
             <b class="arrow fa fa-angle-down"></b>
@@ -46,7 +40,7 @@
           <ul class="submenu">
             <li class="">
               <a href="<%=employees_path %>">
-                <i class="menu-icon fa fa-caret-right"></i>
+                <i class="ace-icon glyphicon glyphicon-list"></i>
                   Employee List
               </a>
 
@@ -55,7 +49,7 @@
 
             <li class="">
               <a href="<%=new_employee_path%>">
-                <i class="menu-icon fa fa-caret-right"></i>
+                <i class="ace-icon glyphicon glyphicon-plus"></i>
                 Add Employee
               </a>
 
@@ -64,7 +58,68 @@
 
           </ul>
         </li>
+        <li class="">
+          <a href="#" class="dropdown-toggle">
+            <i class="menu-icon fa fa-caret-right"></i>
+              Delivery Unit Cells
 
+            <b class="arrow fa fa-angle-down"></b>
+          </a>
+
+          <b class="arrow"></b>
+
+            <ul class="submenu">
+            <li class="">
+              <a href="<%=dutables_path %>">
+                <i class="ace-icon glyphicon glyphicon-list"></i>
+                List of Units
+              </a>
+
+              <b class="arrow"></b>
+            </li>
+
+            <li class="">
+              <a href="<%=new_dutable_path %>">
+                <i class="ace-icon glyphicon glyphicon-plus"></i>
+                  Add Units
+              </a>
+
+              <b class="arrow"></b>
+            </li>
+
+          </ul>
+        </li>
+
+        <li class="">
+          <a href="#" class="dropdown-toggle">
+            <!-- <i class="ace-icon fa fa-users"></i> -->
+          Feedback
+
+            <b class="arrow fa fa-angle-down"></b>
+          </a>
+
+          <b class="arrow"></b>
+
+          <ul class="submenu">
+            <li class="">
+              <a href="<%=new_feedback_path%>">
+                <i class="ace-icon glyphicon glyphicon-plus"></i>
+              Feedback Form
+              </a>
+
+              <b class="arrow"></b>
+            </li>
+            <li class="">
+              <a href="<%=schedulers_path%>">
+                <i class="ace-icon glyphicon glyphicon-plus"></i>
+              Listing Interviews
+              </a>
+
+              <b class="arrow"></b>
+            </li>
+
+          </ul>
+        </li>
 
   </ul>
   <!-- /.nav-list
