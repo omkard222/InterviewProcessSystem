@@ -2,11 +2,11 @@ class SchedulersController < ApplicationController
   def index
     @schedulers = Scheduler.all
   end
+
   def new
     @requirement = Requirement.find(params[:requirement_id])
     @candidate = Candidate.find(params[:candidate_id])
     @scheduler = @candidate.schedulers.build
-
   end
 
 
@@ -19,22 +19,15 @@ class SchedulersController < ApplicationController
     @candidate = Candidate.find(params[:candidate_id])
     @scheduler =  @candidate.schedulers.new(schedulers_params)
     @scheduler.requirement_id = params[:requirement_id]
-    @alreadyschedule = Scheduler.all
 
-    @alreadyschedule.each do |a|
+
 
     respond_to do |format|
-      if @scheduler.candidate_id == a.candidate_id
-          format.html {redirect_to @scheduler, notice: 'Already Interview Schedule' }
-
-      else
-        @scheduler.save
+      @scheduler.save
         InterviewInfoMailer.candidate_information(@scheduler).deliver
         format.html {render 'show', notice: 'Interview schedule' }
       end
-        end
 
-      end
   end
 
   def update

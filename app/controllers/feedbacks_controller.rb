@@ -3,6 +3,8 @@ class FeedbacksController < ApplicationController
     @scheduler = Requirement.find(params[:scheduler_id])
     @feedbacks = @scheduler.feedbacks
   end
+
+
   def new
       @scheduler = Scheduler.find(params[:scheduler_id])
       @feedback = @scheduler.feedbacks.new
@@ -10,6 +12,7 @@ class FeedbacksController < ApplicationController
 
   def create
     @scheduler = Scheduler.find(params[:scheduler_id])
+
     @feedback = @scheduler.feedbacks.new(feedback_params)
     respond_to do |format|
       if @feedback.save
