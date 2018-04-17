@@ -98,7 +98,7 @@ ActiveRecord::Schema.define(version: 20180413071650) do
     t.string "opportunityID"
     t.string "job_description"
     t.string "job_summary"
-    t.string "status", default: "open"
+    t.string "status"
     t.index ["project_id"], name: "index_requirements_on_project_id"
   end
 
