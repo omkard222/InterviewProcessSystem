@@ -19,7 +19,7 @@
     <%  @schedulers.each do |scheduler| %>
       <tr>
         <td>
-          <%= scheduler.candidate.candidate_full_name %>
+          <%= scheduler.candidate.candidate_full_name rescue '' %>
         </td>
 
         <td>

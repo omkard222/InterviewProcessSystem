@@ -4,17 +4,21 @@
   <table class="table table-bordered table-hover">
     <thead>
       <tr>
+        <th>Sr No.</th>
         <th>Delivery Unit Name</th>
 
         <th>No of Projects</th>
         <th></th>
-        <th></th>
+        <!-- <th></th> -->
 
       </tr>
     </thead>
     <tbody>
-      <% @dutables.each do |d| %>
+      <% @dutables.each_with_index do |d, i| %>
         <tr>
+          <td>
+            <%=i + 1 %>
+          </td>
           <td>
             <%= d.du_name %>
 
@@ -25,9 +29,9 @@
           <td>
           <%= link_to 'Details', dutable_path(d), class:'btn btn-info'%>
           </td>
-          <td>
+          <!-- <td>
           <%= link_to 'Add Project',  edit_dutable_path(d), class: 'class="ace-icon fa fa-wrench  bigger-110 icon-only btn btn-warning btn-xm"'%>
-          </td>
+          </td> -->
 
 
       <% end %>

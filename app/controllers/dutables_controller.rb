@@ -69,6 +69,6 @@ class DutablesController < ApplicationController
   private
 
   def dutable_params
-    params.require(:dutable).permit(:du_name, :du_id_code, :du_description, projects_attributes: [:id, :project_name, :pro_idcode, :pro_description, :_destroy] )
+    params.require(:dutable).permit(:du_name, :du_description, projects_attributes: [:id, :project_name,:pro_description, :_destroy] )
   end
 end
