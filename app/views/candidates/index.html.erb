@@ -29,14 +29,11 @@
         </td>
 
          <td><%= link_to "Download Resume", candidate.resume_url %></td>
-
          <%if candidate.requirement.status == "closed" %>
-              <td><%= link_to "Schedule_Interview", "#"%></td>
-           <%else%>
-              <td><%= link_to "Schedule_Interview", new_requirement_candidate_scheduler_path(@requirement, candidate) %></td>
-          <%end%>
-
-
+            <td><%= link_to "Schedule_Interview", "#"%></td>
+         <%else%>
+            <td><%= link_to "Schedule_Interview", new_requirement_candidate_scheduler_path(@requirement, candidate) %></td>
+        <%end%>
 
       </tr>
     <% end %>
