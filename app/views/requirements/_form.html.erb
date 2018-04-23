@@ -78,6 +78,17 @@
             <input class="col-xs-10 col-sm-5" type="text" name="requirement[qualification]" id="requirement_qualification" required>
             </div>
           </div>
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Status</label>
+            <div class="col-sm-9">
+              <select name="requirement[status]" id="requirement_status" required>
+                  <option value="open">open</option>
+                 <option value="closed">Closed</option>
+                  <option value="hold">Hold</option>
+              </select>
+            </div>
+        </div>
           <div class="actions">
             <%= f.hidden_field :project_id%>
             <%= f.submit 'Save' , class: "btn btn-primary" %>

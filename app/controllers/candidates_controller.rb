@@ -8,6 +8,11 @@ class CandidatesController < ApplicationController
     @candidates = @requirement.candidates
   end
 
+  def allcandidate
+    @candidate = Candidate.all
+    @feedback = Feedback.all
+  end
+
   # GET /candidates/1
   # GET /candidates/1.json
   def show

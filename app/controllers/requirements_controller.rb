@@ -45,7 +45,7 @@ class RequirementsController < ApplicationController
   # PATCH/PUT /requirements/1
   # PATCH/PUT /requirements/1.json
   def update
-    @requirement.employee_requirement_skills.build(skill_id: params[:requirement][:skill_id])
+
     respond_to do |format|
       if @requirement.update(requirement_params)
         format.html { redirect_to [@requirement, @project] , notice: 'Requirement was successfully updated.' }
@@ -76,9 +76,9 @@ class RequirementsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def requirement_params
 
-      params.require(:requirement).permit(:position, :skills, :experience,:qualification, :opportunityID, :skill_id, :project_id, :job_description, :job_summary)
+      params.require(:requirement).permit(:status,:position, :skills, :experience,:qualification, :opportunityID, :skill_id, :project_id, :job_description, :job_summary)
 
-      
+
 
     end
 end

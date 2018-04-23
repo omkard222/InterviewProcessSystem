@@ -19,4 +19,5 @@ Rails.application.routes.draw do
 
   get 'users/index'
   get 'admin/index'
+  get 'candidates/allcandidate'
 end
