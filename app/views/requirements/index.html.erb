@@ -9,7 +9,9 @@
 
       <th>Qualification</th>
       <th>Project Name</th>
+      <th>No of Candidates</th>
       <th>Add Candidate</th>
+      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -40,6 +42,9 @@
         </td>
         <td>
           <%= requirement.project.project_name %>
+        </td>
+        <td>
+          <%= requirement.candidates.count %>
         </td>
         <td>
           <%= link_to 'New', new_requirement_candidate_path(requirement) %>
