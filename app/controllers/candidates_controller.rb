@@ -4,8 +4,14 @@ class CandidatesController < ApplicationController
   # GET /candidates
   # GET /candidates.json
   def index
+  
     @requirement = Requirement.find(params[:requirement_id])
-    @candidates = @requirement.candidates
+    @candidates = @requirement.candidates.eager_load(:requirement)
+  end
+
+  def allcandidate
+    @candidate = Candidate.all
+    @feedback = Feedback.all
   end
 
   # GET /candidates/1

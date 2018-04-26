@@ -1,0 +1,1 @@
+$("#Req-<%=@requirement.id%>").html("<%= escape_javascript render(partial: 'candidates/candidate_list', locals: { candidates: @candidates, requirement: @requirement}) %>");

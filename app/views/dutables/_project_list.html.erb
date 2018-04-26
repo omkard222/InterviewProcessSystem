@@ -1,0 +1,38 @@
+
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>Sr No.</th>
+          <th>Projects </th>
+          <th>Total Requirements</th>
+          <th>Action</th>
+
+
+
+        </tr>
+      </thead>
+      <tbody>
+      <% dutable.projects.each_with_index do |project, i|%>
+          <tr>
+            <td>
+              <%= i + 1%>
+            </td>
+            <td>
+              <%= project.project_name%>
+            </td>
+            <td>
+              <span class="badge badge-warning badge-left" ><%=project.requirements.count%></span>
+            </td>
+            <td>
+            <%= link_to "Details".html_safe, project_path(project), class:'btn btn-info '%>
+            </td>
+          </tr>
+
+
+        <% end %>
+      </tbody>
+    </table>
+
+    <br>
+
+    <%= link_to 'Add Project',  edit_dutable_path(dutable), class:'ace-icon fa btn btn-primary bigger-110 icon-only  btn-xm'%>

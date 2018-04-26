@@ -1,7 +1,7 @@
 <div class="sidebar responsive ace-save-state" id="sidebar">
   <ul class="nav nav-list">
 
-
+<% if current_user.admin? %>
         <li class="">
           <a href="#" class="dropdown-toggle">
             <i class="ace-icon glyphicon glyphicon-asterisk"></i>
@@ -92,6 +92,33 @@
 
         <li class="">
           <a href="#" class="dropdown-toggle">
+            <i class="ace-icon fa fa-pencil-square-o"></i>
+            <!-- <i class="ace-icon fa fa-users"></i> -->
+          Candidate
+
+            <b class="arrow fa fa-angle-down"></b>
+          </a>
+
+          <b class="arrow"></b>
+
+          <ul class="submenu">
+
+            <li class="">
+              <a href="<%=candidates_allcandidate_path%>">
+                <i class="ace-icon glyphicon glyphicon-list"></i>
+              Listing Candidate
+              </a>
+
+              <b class="arrow"></b>
+            </li>
+
+          </ul>
+        </li>
+
+
+        <li class="">
+          <a href="#" class="dropdown-toggle">
+            <i class="ace-icon fa fa-pencil-square-o"></i>
             <!-- <i class="ace-icon fa fa-users"></i> -->
           Feedback
 
@@ -113,6 +140,149 @@
 
           </ul>
         </li>
+
+       <% elsif current_user.hr? %>
+
+       <li class="">
+         <a href="#" class="dropdown-toggle">
+           <i class="ace-icon glyphicon glyphicon-asterisk"></i>
+             Requirements
+
+           <b class="arrow fa fa-angle-down"></b>
+         </a>
+
+         <b class="arrow"></b>
+
+           <ul class="submenu">
+
+           <li class="">
+             <a href="<%=requirements_path %>">
+               <i class="ace-icon glyphicon glyphicon-list"></i>
+                 Requirement List
+             </a>
+
+             <b class="arrow"></b>
+           </li>
+
+
+
+         </ul>
+       </li>
+       <li class="">
+         <a href="#" class="dropdown-toggle">
+           <i class="ace-icon fa fa-users"></i>
+           Employees
+
+           <b class="arrow fa fa-angle-down"></b>
+         </a>
+
+         <b class="arrow"></b>
+
+         <ul class="submenu">
+           <li class="">
+             <a href="<%=employees_path %>">
+               <i class="ace-icon glyphicon glyphicon-list"></i>
+                 Employee List
+             </a>
+
+             <b class="arrow"></b>
+           </li>
+
+           <li class="">
+             <a href="<%=new_employee_path%>">
+               <i class="ace-icon glyphicon glyphicon-plus"></i>
+               Add Employee
+             </a>
+
+             <b class="arrow"></b>
+           </li>
+
+         </ul>
+       </li>
+       <li class="">
+         <a href="#" class="dropdown-toggle">
+           <i class="menu-icon fa fa-caret-right"></i>
+             Delivery Unit Cells
+
+           <b class="arrow fa fa-angle-down"></b>
+         </a>
+
+         <b class="arrow"></b>
+
+           <ul class="submenu">
+           <li class="">
+             <a href="<%=dutables_path %>">
+               <i class="ace-icon glyphicon glyphicon-list"></i>
+               List of Units
+             </a>
+
+             <b class="arrow"></b>
+           </li>
+
+           <li class="">
+             <a href="<%=new_dutable_path %>">
+               <i class="ace-icon glyphicon glyphicon-plus"></i>
+                 Add Units
+             </a>
+
+             <b class="arrow"></b>
+           </li>
+
+         </ul>
+       </li>
+
+       <li class="">
+         <a href="#" class="dropdown-toggle">
+           <i class="ace-icon fa fa-pencil-square-o"></i>
+           <!-- <i class="ace-icon fa fa-users"></i> -->
+         Candidate
+
+           <b class="arrow fa fa-angle-down"></b>
+         </a>
+
+         <b class="arrow"></b>
+
+         <ul class="submenu">
+
+           <li class="">
+             <a href="<%=candidates_allcandidate_path%>">
+               <i class="ace-icon glyphicon glyphicon-list"></i>
+             Listing Candidate
+             </a>
+
+             <b class="arrow"></b>
+           </li>
+
+         </ul>
+       </li>
+
+       <%else%>
+
+        <li class="">
+          <a href="#" class="dropdown-toggle">
+            <i class="ace-icon fa fa-pencil-square-o"></i>
+            <!-- <i class="ace-icon fa fa-users"></i> -->
+          Feedback
+
+            <b class="arrow fa fa-angle-down"></b>
+          </a>
+
+          <b class="arrow"></b>
+
+          <ul class="submenu">
+
+            <li class="">
+              <a href="<%=schedulers_path%>">
+                <i class="ace-icon glyphicon glyphicon-list"></i>
+              Listing Interviews
+              </a>
+
+              <b class="arrow"></b>
+            </li>
+
+          </ul>
+        </li>
+<%end%>
 
   </ul>
   <!-- /.nav-list

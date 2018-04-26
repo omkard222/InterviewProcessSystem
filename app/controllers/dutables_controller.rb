@@ -15,6 +15,8 @@ class DutablesController < ApplicationController
   end
 
 
+
+
   def new
     @dutable = Dutable.new
     @project = @dutable.projects.build
@@ -46,24 +48,31 @@ class DutablesController < ApplicationController
   def update
     @dutable = Dutable.find(params[:id])
     respond_to do |format|
-    if @dutable.update(dutable_params)
-      format.html { redirect_to @dutable,notice: 'Updated Successfully' }
+      if @dutable.update(dutable_params)
+        format.html { redirect_to @dutable,notice: 'Updated Successfully' }
 
 
-    else
-      render :edit
+      else
+        render :edit
 
+      end
     end
-  end
 
   end
 
   def destroy
     Dutable.find(params[:id]).destroy
-      respond_to do |format|
+    respond_to do |format|
       format.html { redirect_to dutable_url, notice: 'Requirement was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def get_project_list
+    @dutable = Dutable.find(params[:id])
+    respond_to do |format|
+    format.js
+  end
   end
 
   private

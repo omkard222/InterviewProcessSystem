@@ -1,37 +1,51 @@
 <center><h1>Requirements</h1><center>
-<table class="table table-bordered table-hover " >
-  <thead class="table-header">
-    <tr>
-      <th>Position</th>
-      <th>Status</th>
+  <table class="table table-bordered table-hover " >
+    <thead class="table-header">
+      <tr>
+        <th class="detail-col">Details</th>
+        <th>Position</th>
+        <th>Status</th>
 
-      <th>Experience</th>
+        <th>Experience</th>
 
-      <th>Qualification</th>
-      <th>Project Name</th>
-      <th>No of Candidates</th>
-      <th>Add Candidate</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
+        <th>Qualification</th>
+        <th>Project Name</th>
+        <th>No of Candidates</th>
+        <th>Add Candidate</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
 
 
 
-    </tr>
-  </thead>
-  <tbody>
-    <% @requirements.each do |requirement| %>
+      </tr>
+    </thead>
+    <tbody>
+      <% @requirements.each do |requirement| %>
 
       <tr>
+        <td class="center">
+          <div class="action-buttons">
+            <a href="/requirements/candidates/get_candidate_list?id=<%=requirement.id%>" class="green bigger-140 show-details-btn" title="Show Details" data-remote=true >
+              <i class="ace-icon fa fa-angle-double-down"></i>
+              <span class="sr-only">Details</span>
+            </a>
+          </div>
+        </td>
+
         <td>
           <%= requirement.position %>
         </td>
+
         <td>
-          <%= requirement.status %>
+          <%on = requirement.status %>
+          <%if on == 'open'%>
+            <span class="label label-success arrowed">Open</span>
+            <%elsif on == 'closed'%>
+              <span class="label label-danger arrowed-in">Closed</span>
+            <%end%>
         </td>
-
-
 
         <td>
           <%= requirement.experience %>
@@ -46,6 +60,7 @@
         <td>
           <%= requirement.candidates.count %>
         </td>
+
         <td>
           <%= link_to 'New', new_requirement_candidate_path(requirement) %>
         </td>
@@ -63,7 +78,24 @@
           <%= link_to 'details', requirement_candidates_path(requirement), class:'btn btn-info' %>
         </td>
       </tr>
+
+
+      <tr class="detail-row">
+        <td colspan="12" id= "Req-<%=requirement.id%>">
+
+        </td>
+    </tr>
+
     <% end %>
   </tbody>
 </table>
 <br/>
+
+
+<script>
+$('.show-details-btn').on('click', function(e) {
+  e.preventDefault();
+  $(this).closest('tr').next().toggleClass('open');
+  $(this).find(ace.vars['.icon']).toggleClass('fa-angle-double-down').toggleClass('fa-angle-double-up');
+});
+</script>

@@ -8,12 +8,18 @@ class Ability
       if user.admin?
         can :manage, :all
       elsif user.hr?
+
+
+        can :create, Requirement
         can :index, Requirement
-        can :update, Requirement 
+        can :update, Requirement
+        can :get_candidate_list, Requirement
+        can :manage, Feedback
       else
-        can :read, :all
+        can :read
       end
-    #
+
+
     # The first argument to `can` is the action you are giving the user
     # permission to do.
     # If you pass :manage it will apply to every action. Other common actions
