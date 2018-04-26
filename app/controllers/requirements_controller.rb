@@ -1,11 +1,11 @@
 class RequirementsController < ApplicationController
-  before_action :set_requirement, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_requirement, only: [:show, :edit, :update, :destroy, :get_candidate_list]
+ load_and_authorize_resource
   # GET /requirements
   # GET /requirements.json
   def index
 
-    @requirements = Requirement.all
+    @requirements = Requirement.order(created_at: :desc)
   end
 
   # GET /requirements/1
@@ -30,6 +30,9 @@ class RequirementsController < ApplicationController
   def create
     # @project = Project.find(params[:project_id])
     @requirement = Requirement.new(requirement_params)
+
+
+
     respond_to do |format|
       if @requirement.save
         format.html { redirect_to @requirement, notice: 'Requirement was successfully created.' }
@@ -64,6 +67,13 @@ class RequirementsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to requirements_url, notice: 'Requirement was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def get_candidate_list
+    @candidates = @requirement.candidates.order(created_at: :desc)
+      respond_to do |format|
+      format.js
     end
   end
 

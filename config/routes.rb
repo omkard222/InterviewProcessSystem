@@ -20,4 +20,6 @@ Rails.application.routes.draw do
   get 'users/index'
   get 'admin/index'
   get 'candidates/allcandidate'
+  get "requirements/candidates/get_candidate_list", controller: "requirements", action: "get_candidate_list"
+  get "dutables/projects/get_project_list", controller: "dutables", action: "get_project_list"
 end
