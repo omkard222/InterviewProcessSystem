@@ -1,0 +1,63 @@
+
+
+  <h1>Feedback History of</h1>
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Round</th>
+        <th>Type of Round</th>
+        <th>Interviewer</th>
+        <th>Status</th>
+        <th>Duration of Interview</th>
+        <th>Communication</th>
+        <th>Comments</th>
+        <th>Learning Capabilities</th>
+        <th>Technical Analysis</th>
+
+
+
+
+      </tr>
+    </thead>
+    <tbody>
+      <%  @feed.each do |detail| %>
+        <tr>
+          <td>
+            <%= detail.stage_name %>
+          </td>
+
+          <td>
+            <%= detail.round_type %>
+          </td>
+
+          <td>
+            <%= detail.scheduler.user.name %>
+          </td>
+          <td>
+              <%= detail.status %>
+          </td>
+          <td>
+            <%= detail.duration_of_interview %>
+          </td>
+          <td>
+              <%= detail.communication %>
+          </td>
+          <td>
+            <%= detail.attitude %>
+          </td>
+          <td>
+            <%= detail.comments %>
+          </td>
+          <td>
+              <%= detail.Tech_analysis %>
+          </td>
+
+
+
+
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<%= link_to 'Back', schedulers_path %>

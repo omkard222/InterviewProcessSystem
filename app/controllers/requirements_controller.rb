@@ -1,6 +1,6 @@
 class RequirementsController < ApplicationController
   before_action :set_requirement, only: [:show, :edit, :update, :destroy, :get_candidate_list]
- load_and_authorize_resource
+
   # GET /requirements
   # GET /requirements.json
   def index
@@ -23,6 +23,7 @@ class RequirementsController < ApplicationController
 
   # GET /requirements/1/edit
   def edit
+      @requirement = Requirement.find(params[:id])
   end
 
   # POST /requirements

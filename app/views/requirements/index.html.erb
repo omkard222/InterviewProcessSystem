@@ -14,7 +14,7 @@
         <th>Add Candidate</th>
         <th></th>
         <th></th>
-        <th></th>
+      
         <th></th>
 
 
@@ -70,9 +70,7 @@
         <td>
           <%= link_to 'Edit', edit_requirement_path(requirement), class: 'ace-icon fa fa-pencil-square-o bigger-120' %>
         </td>
-        <td>
-          <%= link_to 'Delete', requirement, method: :delete, data: { confirm: 'Are you sure?' }, class:  'ace-icon fa fa-trash-o bigger-120 orange' %>
-        </td>
+
 
         <td>
           <%= link_to 'details', requirement_candidates_path(requirement), class:'btn btn-info' %>

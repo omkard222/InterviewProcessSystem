@@ -8,8 +8,8 @@ class InterviewInfoMailer < ApplicationMailer
     def candidate_information(scheduler)
 
      @scheduler = scheduler
-
-     mail(to: @scheduler.employee.emp_mail, subject: 'InterviewInfo')
+     attachments['Candidate Resume'] = File.read(scheduler.candidate.resume.file.path)
+     mail(to: @scheduler.user.email, subject: 'InterviewInfo')
     end
 
 

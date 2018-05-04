@@ -91,8 +91,8 @@
                     <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Inteviewer</label>
                       <div class="col-sm-9">
-                    <!-- <%= f.select :employee_id, Employee.get_employees_from_requirements(@requirement).collect{ |e| [e.full_name, e.id]} %> -->
-                      <%= f.select :employee_id, Employee.all.collect{ |e| [e.full_name, e.id]} %>
+                
+                      <%= f.select :user_id, options_for_select(User.pluck(:name, :id))%>
                   </div>
                   </div>
 

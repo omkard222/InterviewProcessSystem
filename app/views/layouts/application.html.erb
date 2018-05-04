@@ -2,6 +2,14 @@
 <head>
   <title>InterviewPortal</title>
   <%= csrf_meta_tags %>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js"></script>
+  <link href="alert/css/alert.css" rel="stylesheet" />
+  <link href="alert/themes/default/theme.css" rel="stylesheet" />
+  <script src="alert/js/alert.js"></script>
+
+  
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <body class="no-skin <%= !user_signed_in? ? " login-layout" : ''%>">
@@ -23,6 +31,7 @@
                   <i class="ace-icon fa fa-home home-icon"></i>
                   <a href="<%=users_index_path%>">Home</a>
                 </li>
+
 
               </ul><!-- /.breadcrumb -->
             </div>
