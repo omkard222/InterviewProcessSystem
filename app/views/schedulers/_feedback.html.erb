@@ -1,0 +1,60 @@
+<h1>Listing Interviews</h1>
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Candidate name</th>
+      <th>Interviewer</th>
+      <th>Interview Date</th>
+      <th>Start Time</th>
+      <th>End Time</th>
+      <th>Round</th>
+      <th>Type</th>
+      <th>Last Feedback</th>
+      <th>Feedback Details</th>
+
+
+    </tr>
+  </thead>
+  <tbody>
+    <%  @schedulers.each do |scheduler| %>
+      <tr>
+        <td>
+          <%= scheduler.candidate.candidate_full_name rescue '' %>
+        </td>
+
+        <td>
+          <%= scheduler.employee.full_name %>
+        </td>
+
+        <td>
+          <%= scheduler.interview_date %>
+        </td>
+        <td>
+          <%= scheduler.start_time %>
+        </td>
+        <td>
+          <%= scheduler.end_time %>
+        </td>
+        <td>
+          <%=scheduler.feedbacks.last.stage_name rescue ''%>
+        </td>
+        <td>
+          <%=scheduler.feedbacks.last.round_type rescue ''%>
+        </td>
+        <td>
+          <%on = scheduler.feedbacks.last.status rescue ''  %>
+          <%if on == 'Rejected'%>
+            <span class="label label-danger arrowed-in">Rejected</span>
+          <%elsif on == 'Shortlisted'%>
+            <span class="label label-success arrowed">Shortlisted</span>
+          <%elsif on == 'Hold'%>
+            <span class="label label-warning">Hold</span>
+          <%end%>
+        </td>
+        <td>
+        <%= link_to "Feedback Form", new_scheduler_feedback_path(scheduler) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
