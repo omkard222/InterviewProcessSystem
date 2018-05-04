@@ -23,7 +23,7 @@
         </td>
 
         <td>
-          <%= scheduler.employee.full_name %>
+          <%= scheduler.user.full_name %>
         </td>
 
         <td>
@@ -54,6 +54,12 @@
         <td>
         <%= link_to "Feedback Form", new_scheduler_feedback_path(scheduler) %>
         </td>
+
+        <td>
+
+        <%= link_to "Details",  feedbacks_get_feedback_path(:candidate_id => scheduler.candidate.id) %>
+        </td>
+
       </tr>
     <% end %>
   </tbody>

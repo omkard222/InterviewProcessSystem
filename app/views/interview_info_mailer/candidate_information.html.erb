@@ -4,7 +4,7 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Hi <%= @scheduler.employee.emp_firstname %></h1>
+    <h1>Hi <%= @scheduler.user.name %></h1>
     <p>
       Here is information about the candidate
     </p>
@@ -28,7 +28,7 @@
       <%= @scheduler.end_time %>
     </p>
 
-    <p><%= link_to "Download Resume", @scheduler.candidate.resume_url %></p>
+    
 
   </body>
 </html>

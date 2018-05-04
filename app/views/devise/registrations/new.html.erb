@@ -24,9 +24,36 @@
                 <fieldset>
                   <label class='block clearfix'>
                     <span class='block input-icon input-icon-right'>
-                      <%= f.email_field :email, :autofocus => true, class: 'form-control' %>
-                      <i class='ace-icon fa fa-envelope'></i>
+                      <input autofocus="autofocus" class="form-control" type="text" name="user[name]" id="user_name" placeholder="Employee Name">
+
                     </span>
+                  </label>
+                    <label class='block clearfix'>
+                      <span class='block input-icon input-icon-right'>
+                        <input autofocus="autofocus" class="form-control" type="email" value="" name="user[email]" id="user_email" placeholder="Employee Email">
+
+                      </span>
+                  </label>
+                  <label class='block clearfix'>
+                    <span class='block input-icon input-icon-right'>
+                      <input autofocus="autofocus" class="form-control" type="designation" value="" name="user[designation]" id="user_designation" placeholder="Employee Designation">
+
+                    </span>
+                  </label>
+                  <label class='block clearfix'>
+                    <span class='block input-icon input-icon-right'>
+                    <input autofocus="autofocus" class="form-control" type="employee_id" value="" name="user[employee_id]" id="user_employee_id" placeholder="Employee ID">
+
+                    </span>
+                  </label>
+
+                  <label class='block clearfix'>
+                    <span class='block input-icon input-icon-right'>
+                    <input autofocus="autofocus" class="form-control" type="phone_no" value="" name="user[phone_no]" id="user_phone_no" placeholder="Employee Phone">
+
+                    </span>
+                  </label>
+
                   </label>
                   <label class='block clearfix'>
                     <span class='block input-icon input-icon-right'>

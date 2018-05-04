@@ -23,6 +23,7 @@ class SchedulersController < ApplicationController
 
 
     respond_to do |format|
+  
       @scheduler.save
         InterviewInfoMailer.candidate_information(@scheduler).deliver
         format.html {render 'show', notice: 'Interview schedule' }
@@ -46,7 +47,7 @@ class SchedulersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def schedulers_params
-    params.require(:scheduler).permit(:start_time, :end_time, :interview_date, :candidate_id, :employee_id, :requirement_id)
+    params.require(:scheduler).permit(:start_time, :end_time, :interview_date, :candidate_id, :user_id, :requirement_id)
   end
 
 

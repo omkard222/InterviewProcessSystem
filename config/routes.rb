@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   root 'home#index'
-  devise_for :users
+  devise_for :users, :controllers => { registrations: 'registrations' }
   resources :employees
   resources :dutables
   resources :projects
+  get 'feedbacks/get_feedback'
+
   resources :feedbacks
   resources :schedulers do
     resources :feedbacks
@@ -22,4 +24,5 @@ Rails.application.routes.draw do
   get 'candidates/allcandidate'
   get "requirements/candidates/get_candidate_list", controller: "requirements", action: "get_candidate_list"
   get "dutables/projects/get_project_list", controller: "dutables", action: "get_project_list"
+
 end

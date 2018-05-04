@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180417092485) do
+ActiveRecord::Schema.define(version: 20180427110948) do
 
   create_table "candidates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "first_name"
@@ -101,18 +101,27 @@ ActiveRecord::Schema.define(version: 20180417092485) do
     t.index ["project_id"], name: "index_requirements_on_project_id"
   end
 
+  create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.string "resource_type"
+    t.bigint "resource_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
+  end
+
   create_table "schedulers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.date "interview_date"
     t.bigint "candidate_id"
-    t.bigint "employee_id"
     t.bigint "requirement_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "start_time"
     t.string "end_time"
+    t.bigint "user_id"
     t.index ["candidate_id"], name: "index_schedulers_on_candidate_id"
-    t.index ["employee_id"], name: "index_schedulers_on_employee_id"
     t.index ["requirement_id"], name: "index_schedulers_on_requirement_id"
+    t.index ["user_id"], name: "index_schedulers_on_user_id"
   end
 
   create_table "skills", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -135,8 +144,20 @@ ActiveRecord::Schema.define(version: 20180417092485) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.integer "employee_id"
+    t.string "designation"
+    t.string "phone_no"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "users_roles", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.bigint "role_id"
+    t.index ["role_id"], name: "index_users_roles_on_role_id"
+    t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
+    t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
   add_foreign_key "candidates", "requirements"
@@ -145,6 +166,6 @@ ActiveRecord::Schema.define(version: 20180417092485) do
   add_foreign_key "projects", "dutables"
   add_foreign_key "requirements", "projects"
   add_foreign_key "schedulers", "candidates"
-  add_foreign_key "schedulers", "employees"
   add_foreign_key "schedulers", "requirements"
+  add_foreign_key "schedulers", "users"
 end
