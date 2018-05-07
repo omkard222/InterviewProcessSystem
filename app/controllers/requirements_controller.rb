@@ -1,6 +1,11 @@
 class RequirementsController < ApplicationController
   before_action :set_requirement, only: [:show, :edit, :update, :destroy, :get_candidate_list]
-
+  load_and_authorize_resource 
+  rescue_from CanCan::AccessDenied do |exception|
+  Rails.logger.debug "Access Denied: #{exception.message}"
+  flash[:alert] = exception.message
+  redirect_to root_url
+end
   # GET /requirements
   # GET /requirements.json
   def index
