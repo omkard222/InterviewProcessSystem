@@ -1,12 +1,14 @@
 class SchedulersController < ApplicationController
   def index
     @schedulers = Scheduler.all
+
   end
 
   def new
     @requirement = Requirement.find(params[:requirement_id])
     @candidate = Candidate.find(params[:candidate_id])
     @scheduler = @candidate.schedulers.build
+    @users = User.all
   end
 
 
@@ -23,7 +25,7 @@ class SchedulersController < ApplicationController
 
 
     respond_to do |format|
-  
+
       @scheduler.save
         InterviewInfoMailer.candidate_information(@scheduler).deliver
         format.html {render 'show', notice: 'Interview schedule' }

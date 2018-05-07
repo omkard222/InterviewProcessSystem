@@ -1,63 +1,123 @@
 
-
-  <h1>Feedback History of</h1>
-  <table class="table table-bordered table-hover">
-    <thead>
-      <tr>
-        <th>Round</th>
-        <th>Type of Round</th>
-        <th>Interviewer</th>
-        <th>Status</th>
-        <th>Duration of Interview</th>
-        <th>Communication</th>
-        <th>Comments</th>
-        <th>Learning Capabilities</th>
-        <th>Technical Analysis</th>
+<%  @feed.each do |detail| %>
+<div class="container">
+  <div class="row">
+  <div class= "col-md-8" >
+    <h3  style="font-weight:500;" > Interview of: <div class= "bold-inline" style="display: inline;font-weight:200;"><%=detail.candidate.candidate_full_name%></div>  |  Interviewer: <div class="bold-inline" style="display: inline; font-weight:200;"><%=detail.scheduler.user.name%></div>(Round: <%=detail.stage_name%>)</h2>
+    </div>
+  </div>
 
 
 
-
-      </tr>
-    </thead>
-    <tbody>
-      <%  @feed.each do |detail| %>
-        <tr>
-          <td>
-            <%= detail.stage_name %>
-          </td>
-
-          <td>
-            <%= detail.round_type %>
-          </td>
-
-          <td>
-            <%= detail.scheduler.user.name %>
-          </td>
-          <td>
-              <%= detail.status %>
-          </td>
-          <td>
-            <%= detail.duration_of_interview %>
-          </td>
-          <td>
-              <%= detail.communication %>
-          </td>
-          <td>
-            <%= detail.attitude %>
-          </td>
-          <td>
-            <%= detail.comments %>
-          </td>
-          <td>
-              <%= detail.Tech_analysis %>
-          </td>
+  <div class="row">
+    <div class="col-md-4">
+      <p>
+      </p><div class="bold-inline" style="font-weight:900;" >Schedule time:</div>
+      <%=detail.scheduler.interview_date%> at  <%= detail.scheduler.start_time %>
+      <p></p>
+      <p>
+      </p><div class="bold-inline" style="font-weight:900;" >Interview round:</div>
+      <%= detail.stage_name %>
+      <p></p>
+    </div>
 
 
 
+    <div class="col-md-4">
+      <p>
+      </p><div class="bold-inline"  style="font-weight:900;" >Type:</div>
+      <%= detail.round_type %>
+      <p></p>
+      <p>
+      </p><div class="bold-inline"  style="font-weight:900;" >Resume:</div>
+      <%= link_to "Download Resume",detail.candidate.resume_url%>
+      <p></p>
+    </div>
 
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
 
-<%= link_to 'Back', schedulers_path %>
+    <div class="col-md-4">
+      <p>
+      </p><div class="bold-inline"  style="font-weight:900;" >Position Assigned:</div>
+      <%= detail.candidate.requirement.position %>
+      <p></p>
+      <p>
+      </p><div class="bold-inline" style="font-weight:900;" >Status:</div>
+              <%on = detail.status rescue ''  %>
+              <%if on == 'Rejected'%>
+              <span class="label label-danger arrowed-in">Rejected</span>
+              <%elsif on == 'Shortlisted'%>
+              <div class="label label-success" data-placement="bottom" data-toggle="tooltip" title="Interview Status: Completed">
+                <i class="fa fa-check"></i>
+              </div>
+              <span class="label label-success">Shortlisted</span>
+              <%elsif on == 'Hold'%>
+              <span class="label label-warning">Hold</span>
+              <%end%>
+      <p></p>
+    </div>
+  </div>
+
+<hr>
+
+<h3>Evaluation</h3>
+
+<br>
+<div class="comment">
+  <div class="row">
+            <div class="col-sm-1">
+              <div class="thumbnail">
+
+              </div>
+          </div>
+
+            <div class="col-sm-11">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong><%= detail.scheduler.user.name %></strong>
+
+                    </div>
+                    <div class="panel-body">
+                    <p><strong>Stage name</strong> :</p>
+
+                    <p><%= detail.stage_name%>st Round - Tech Interview</p>
+
+                    <p><strong>Status</strong> :</p>
+
+                    <p><%= detail.status %></p>
+
+                    <p><strong>Duration of interview</strong> :</p>
+
+                    <p><%= detail.duration_of_interview %></p>
+
+                    <p><strong>Comments</strong> :</p>
+
+                    <p><%= detail.comments %></p>
+
+                    <p><strong>Communication</strong> :</p>
+
+                    <p><%= detail.communication %></p>
+
+                    <p><strong>Attitude</strong> :</p>
+
+                    <p><%= detail.attitude %></p>
+
+
+
+                    <p><strong>Tech analysis</strong> :</p>
+
+                    <p><%= detail.Tech_analysis %></p>
+
+
+                    </div>
+                    </div>
+                    </div>
+</div>
+  </div>
+</div>
+
+
+
+
+  <%= link_to 'Back', schedulers_path %>
+</div>
+<% end %>

@@ -1,4 +1,5 @@
 <%# Rails flash messages styled for Bootstrap 3.0 %>
+
 <% flash.each do |name, msg| %>
   <% if msg.is_a?(String) %>
     <div class="alert alert-dismissible alert-<%= name.to_s == 'notice' ? 'success' : 'danger' %>">
@@ -30,7 +31,7 @@
           <div class="form-group">
             <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Interview Date: </label>
             <div class="col-sm-9">
-              <input type="date" name="scheduler[interview_date]" id="scheduler_interview_date">
+              <input type="date" name="scheduler[interview_date]" id="scheduler_interview_date" required>
             </div>
           </div>
 
@@ -43,7 +44,7 @@
               <div class='col-sm-6'>
                 <div class="form-group">
                   <div class='input-group date' id='datetimepicker4'>
-                    <input type='text'   name="scheduler[start_time]"  class="form-control" />
+                    <input type='text'   name="scheduler[start_time]"  class="form-control" required>
                     <span class="input-group-addon">
                       <span class="glyphicon glyphicon-time"></span>
                     </span>
@@ -66,20 +67,14 @@
               <div class='col-sm-6'>
                 <div class="form-group">
                   <div class='input-group date' id='datetimepicker3'>
-                    <input type='text'   name="scheduler[end_time]"  class="form-control" />
+                    <input type='text'   name="scheduler[end_time]"  class="form-control" required>
                     <span class="input-group-addon">
                       <span class="glyphicon glyphicon-time"></span>
                     </span>
                   </div>
                 </div>
               </div>
-              <script type="text/javascript">
-              $(function () {
-                $('#datetimepicker3').datetimepicker({
-                  format: 'LT'
-                });
-              });
-              </script>
+
             </div>
           </div>
 
@@ -90,9 +85,8 @@
 
                     <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Inteviewer</label>
-                      <div class="col-sm-9">
-                
-                      <%= f.select :user_id, options_for_select(User.pluck(:name, :id))%>
+                      <div class="col-sm-9" required>
+                      <%= f.select :user_id, options_for_select(User.pluck(:name, :id)), {prompt: "Select"}, class: "chosen-select form-control" %>
                   </div>
                   </div>
 
@@ -101,7 +95,82 @@
           </div>
           <% end %>
 
+
+
         </div>
       </div>
     </div>
   </div>
+
+
+
+
+
+
+
+
+
+
+<script>
+
+
+				if(!ace.vars['touch']) {
+					$('.chosen-select').chosen({allow_single_deselect:true});
+					//resize the chosen on window resize
+
+					$(window)
+					.off('resize.chosen')
+					.on('resize.chosen', function() {
+						$('.chosen-select').each(function() {
+							 var $this = $(this);
+							 $this.next().css({'width': $this.parent().width()});
+						})
+					}).trigger('resize.chosen');
+					//resize chosen on sidebar collapse/expand
+					$(document).on('settings.ace.chosen', function(e, event_name, event_val) {
+						if(event_name != 'sidebar_collapsed') return;
+						$('.chosen-select').each(function() {
+							 var $this = $(this);
+							 $this.next().css({'width': $this.parent().width()});
+						})
+					});
+
+
+					$('#chosen-multiple-style .btn').on('click', function(e){
+						var target = $(this).find('input[type=radio]');
+						var which = parseInt(target.val());
+						if(which == 2) $('#form-field-select-4').addClass('tag-input-style');
+						 else $('#form-field-select-4').removeClass('tag-input-style');
+					});
+				}
+
+
+				//chosen plugin inside a modal will have a zero width because the select element is originally hidden
+				//and its width cannot be determined.
+				//so we set the width after modal is show
+				$('#modal-form').on('shown.bs.modal', function () {
+					if(!ace.vars['touch']) {
+						$(this).find('.chosen-container').each(function(){
+							$(this).find('a:first-child').css('width' , '210px');
+							$(this).find('.chosen-drop').css('width' , '210px');
+							$(this).find('.chosen-search input').css('width' , '200px');
+						});
+					}
+				})
+
+				//or you can activate the chosen plugin after modal is shown
+				//this way select element becomes visible with dimensions and chosen works as expected
+				$('#modal-form').on('shown', function () {
+					$(this).find('.modal-chosen').chosen();
+				})
+
+
+    $(function () {
+      $('#datetimepicker3').datetimepicker({
+        format: 'LT'
+      });
+    });
+
+
+
+</script>

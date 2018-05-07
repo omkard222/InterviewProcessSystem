@@ -1,4 +1,5 @@
 class Scheduler < ApplicationRecord
+    resourcify
   belongs_to :candidate
 
   belongs_to :requirement

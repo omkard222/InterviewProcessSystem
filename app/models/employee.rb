@@ -1,6 +1,7 @@
 class Employee < ApplicationRecord
+    resourcify
     has_and_belongs_to_many :projects
-  
+
     has_many :employee_requirement_skills, as: :employee_requirement_skillable
 
     attr_accessor :skill_id
