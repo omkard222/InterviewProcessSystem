@@ -26,3 +26,4 @@
 // require dataTables.select.min.js
 //= require ace-elements.min.js
 // require dataTables.buttons.min.js
+//= require chosen.jquery.min.js

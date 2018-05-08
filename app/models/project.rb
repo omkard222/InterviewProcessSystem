@@ -1,4 +1,5 @@
 class Project < ApplicationRecord
+    resourcify
   belongs_to :dutable
   has_many :requirements
   has_and_belongs_to_many :employees

@@ -6,6 +6,7 @@ class FeedbacksController < ApplicationController
   end
 
   def get_feedback
+
     @feed = Feedback.where(candidate_id: params[:candidate_id])
     @sch = Scheduler.all
   end
@@ -16,6 +17,7 @@ class FeedbacksController < ApplicationController
   end
 
   def create
+  
     @scheduler = Scheduler.find(params[:scheduler_id])
 
     @feedback = @scheduler.feedbacks.new(feedback_params)
@@ -43,6 +45,6 @@ class FeedbacksController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def feedback_params
-    params.require(:feedback).permit(:scheduler_id, :stage_name, :status, :round_type,:duration_of_interview,:comments, :communication, :attitude, :learning_capabilties, :Tech_analysis)
+    params.require(:feedback).permit(:scheduler_id, :candidate_id, :stage_name, :status, :round_type,:duration_of_interview,:comments, :communication, :attitude, :learning_capabilties, :Tech_analysis)
   end
 end

@@ -17,6 +17,7 @@
 
  *= require custom.css
  *= require_self
+ *= require chosen.min.css
 
  */
  @font-face {

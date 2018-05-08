@@ -1,4 +1,5 @@
 class Requirement < ApplicationRecord
+    resourcify
   has_many :candidates, dependent: :destroy
   has_one :scheduler, dependent: :destroy
   has_many :employee_requirement_skills, as: :employee_requirement_skillable

@@ -1,15 +1,40 @@
 <%=form_for @dutable do |f| %>
-<% if !@dutable.persisted? %>
-  <p>
-      <%=f.label :DU_Name%>
-      <input type="text" name="dutable[du_name]" id="dutable_du_name" required>
-  </p>
 
-  <p>
-      <%=f.label :Description%>
+
+<% if !@dutable.persisted? %>
+
+<div class="container">
+  <h1>Delivery Unit Information</h1>
+  <div class="row">
+    <div class="col-md-8" style="display: inline;">
+
+      <p>
+      </p>
+      <div class="bold-inline" style="font-weight:900;" >
+        <label for="dutable_DU_Name" style="font-weight:900;" >Deliveryunit Name:</label>
+      </div>
+      <input type="text" name="dutable[du_name]" id="dutable_du_name" required>
+
+      <p>
+      </p>
+      <p>
+      </p>
+
+      <div class="bold-inline" style="font-weight:900;">
+        <label for="dutable_Description" style="font-weight:900;" >Description:</label>
+      </div>
+
       <textarea name="dutable[du_description]" id="dutable_du_description" required></textarea>
-  </p>
+
+
+
+    </div>
+  </div>
 <%end%>
+
+<hr>
+
+
 <table class = 'table'>
   <thead>
     <tr>
@@ -38,3 +63,5 @@
 
 </div>
 <%end%>
+
+</div>
