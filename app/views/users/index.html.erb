@@ -4,7 +4,12 @@
 
 </div>
 
-<%if current_user.designation == "Software Engineer"%>
+<%if current_user.any?%>
 
- <%= render :partial => 'schedulers/feedback'%>
+<%= render :partial => 'schedulers/employee_feedback_page'%>
+
+<%elsif current_user.manager?%>
+<%= render :partial => 'schedulers/manager_feedback_page'%>
+<%else%>
+<%= render :partial => 'schedulers/feedback'%>
 <%end%>

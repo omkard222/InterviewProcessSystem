@@ -31,5 +31,5 @@ class User < ApplicationRecord
   def any?
     has_role?(:team_member)
   end
-
+  
 end
