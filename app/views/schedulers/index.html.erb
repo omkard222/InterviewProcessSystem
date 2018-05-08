@@ -1,1 +1,8 @@
-<%= render 'feedback'%>
+
+<%if current_user.manager?%>
+  <%= render 'manager_feedback_page'%>
+<%elsif current_user.any?%>
+    <%= render 'employee_feedback_page'%>
+<%else%>
+    <%= render 'feedback'%>
+<%end%>
