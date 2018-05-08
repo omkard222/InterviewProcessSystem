@@ -2,6 +2,7 @@
   <table class="table table-bordered table-hover " >
     <thead class="table-header">
       <tr>
+        <th>Sr No</th>
         <th class="detail-col">Details</th>
         <th>Position</th>
         <th>Status</th>
@@ -11,10 +12,11 @@
         <th>Qualification</th>
         <th>Project Name</th>
         <th>No of Candidates</th>
+        <th>Created at</th>
         <th>Add Candidate</th>
         <th></th>
         <th></th>
-      
+
         <th></th>
 
 
@@ -22,9 +24,13 @@
       </tr>
     </thead>
     <tbody>
-      <% @requirements.each do |requirement| %>
+      <% @requirements.each_with_index do |requirement, i| %>
 
       <tr>
+        <td>
+          <%=i + 1 %>
+        </td>
+
         <td class="center">
           <div class="action-buttons">
             <a href="/requirements/candidates/get_candidate_list?id=<%=requirement.id%>" class="green bigger-140 show-details-btn" title="Show Details" data-remote=true >
@@ -60,7 +66,9 @@
         <td>
           <%= requirement.candidates.count %>
         </td>
-
+        <td>
+          <%= requirement.created_at.strftime("%d/%m/%Y at %H:%M:%S") %>
+        </td>
         <td>
           <%= link_to 'New', new_requirement_candidate_path(requirement) %>
         </td>

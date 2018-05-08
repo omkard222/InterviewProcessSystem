@@ -1,6 +1,7 @@
 <table id="dynamic-table" class="table table-striped table-bordered table-hover">
   <thead>
     <tr>
+      <th>Sr No</th>
       <th>Candidate Name</th>
 
       <th>Contact</th>
@@ -12,8 +13,11 @@
   </thead>
 
   <tbody>
-    <%  candidates.each do |candidate| %>
+    <%  candidates.each_with_index do |candidate, i| %>
     <tr>
+      <td>
+        <%=i + 1 %>
+      </td>
       <td>
         <%= candidate.candidate_full_name %>
       </td>
@@ -52,7 +56,7 @@
       </td>
       <%else%>
       <td>
-        <%= link_to "Schedule_Interview", new_requirement_candidate_scheduler_path(requirement, candidate) %>
+        <%= link_to "Schedule Interview", new_requirement_candidate_scheduler_path(requirement, candidate) %>
       </td>
       <%end%>
 
