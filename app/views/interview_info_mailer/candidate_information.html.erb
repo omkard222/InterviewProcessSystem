@@ -1,34 +1,81 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    <h1>Hi <%= @scheduler.user.name %></h1>
-    <p>
-      Here is information about the candidate
-    </p>
-    <p>
-      <b>Candidate Name</b>
-      <%= @scheduler.candidate.candidate_full_name %>
-    </p>
-    <p>
-      <b>Candidate ContactNo</b>
-      <%= @scheduler.candidate.contact%>
-    </p>
-    <p>
-      <b>Interview date:</b>
-      <%= @scheduler.interview_date%>
-    <p>
-      <b>Interview Start time</b>
-      <%= @scheduler.start_time %>
-    </p>
-    <p>
-      <b>Interview End time</b>
-      <%= @scheduler.end_time %>
-    </p>
+<html lang="en">
+<head>
+<title>CSS Template</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
 
-    
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.header {
+    background-color: #1E90FF;
+    padding: 30px;
+    /*text-align: center;*/
+    align: left;
+    font-size: 35px;
+}
 
-  </body>
+
+/* Style the content */
+.content {
+    background-color: #ddd;
+    padding: 10px;
+    height: 800px;
+}
+
+/* Style the footer */
+.footer {
+    background-color: #f1f1f1;
+    padding: 10px;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <%= image_tag attachments['ig-logo.png'].url %>
+</div>
+
+<div class="content">
+  <h1>Hi <%= @scheduler.user.name %></h1>
+  <p>
+    Here is information about the candidate
+  </p>
+  <p>
+    <b>Candidate Name</b>
+    <%= @scheduler.candidate.candidate_full_name %>
+  </p>
+  <p>
+    <b>Candidate Contact No</b>
+    <%= @scheduler.candidate.contact%>
+  </p>
+  <p>
+    <b>Interview date:</b>
+    <%= @scheduler.interview_date%>
+  <p>
+    <b>Interview Start time</b>
+    <%= @scheduler.start_time %>
+  </p>
+  <p>
+    <b>Interview End time</b>
+    <%= @scheduler.end_time %>
+  </p>
+  <br>
+  <p>Regards,</p>
+  <p style = "color:DodgerBlue;">Infogain</p>
+
+</div>
+
+<div class="footer">
+
+</div>
+
+</body>
 </html>
