@@ -1,5 +1,5 @@
 class Feedback < ApplicationRecord
-    resourcify
+  resourcify
   belongs_to :scheduler
   # before_save :save_details
   belongs_to :candidate

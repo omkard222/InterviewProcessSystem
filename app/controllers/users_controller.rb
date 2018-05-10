@@ -5,6 +5,4 @@ class UsersController < ApplicationController
     @employee_feedback = Scheduler.where(user_id: current_user.id)
   end
 
-
-
 end

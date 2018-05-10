@@ -4,7 +4,6 @@ class CandidatesController < ApplicationController
   # GET /candidates
   # GET /candidates.json
   def index
-  
     @requirement = Requirement.find(params[:requirement_id])
     @candidates = @requirement.candidates.eager_load(:requirement)
   end
@@ -14,42 +13,34 @@ class CandidatesController < ApplicationController
     @feedback = Feedback.all
   end
 
-  # GET /candidates/1
-  # GET /candidates/1.json
   def show
 
   end
 
-  # GET /candidates/new
   def new
     @requirement = Requirement.find(params[:requirement_id])
     @candidate = @requirement.candidates.new
   end
 
-  # GET /candidates/1/edit
   def edit
   end
 
-  # POST /candidates
-  # POST /candidates.json
   def create
 
     @requirement = Requirement.find(params[:requirement_id])
     @candidate = @requirement.candidates.new(candidate_params)
 
     respond_to do |format|
-      if @candidate.save
-        format.html { redirect_to [@requirement,@candidate], notice: 'Candidate was successfully created.' }
-        format.json { render :show, status: :created, location: @candidate }
-      else
-        format.html { render :new }
-        format.json { render json: @candidate.errors, status: :unprocessable_entity }
-      end
+        if @candidate.save
+          format.html { redirect_to [@requirement,@candidate], notice: 'Candidate was successfully created.' }
+          format.json { render :show, status: :created, location: @candidate }
+        else
+          format.html { render :new }
+          format.json { render json: @candidate.errors, status: :unprocessable_entity }
+        end
     end
   end
 
-  # PATCH/PUT /candidates/1
-  # PATCH/PUT /candidates/1.json
   def update
     respond_to do |format|
       if @candidate.update(candidate_params)
@@ -62,8 +53,6 @@ class CandidatesController < ApplicationController
     end
   end
 
-  # DELETE /candidates/1
-  # DELETE /candidates/1.json
   def destroy
     @candidate.destroy
     respond_to do |format|
@@ -73,12 +62,11 @@ class CandidatesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_candidate
       @candidate = Candidate.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def candidate_params
       params.require(:candidate).permit(:first_name, :last_name, :contact, :email, :resume, :requirement_id)
     end

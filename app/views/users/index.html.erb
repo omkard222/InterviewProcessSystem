@@ -1,15 +1,11 @@
 <div>
 
-  <h1> Hello, <%=current_user.email%></h1>
+  <h1> Hello, <%=current_user.name%></h1>
 
 </div>
 
-<%if current_user.any?%>
+<%if current_user.team_member?%>
 
 <%= render :partial => 'schedulers/employee_feedback_page'%>
 
-<%elsif current_user.manager?%>
-<%= render :partial => 'schedulers/manager_feedback_page'%>
-<%else%>
-<%= render :partial => 'schedulers/feedback'%>
 <%end%>

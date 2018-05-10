@@ -3,11 +3,10 @@ class User < ApplicationRecord
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
-
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+  has_many :projects
   has_many :schedulers
-   cattr_accessor :current_role
+  cattr_accessor :current_role
   # def is_hr?
   #
   #   @user = User.find(params[:id])
@@ -28,8 +27,8 @@ class User < ApplicationRecord
     has_role?(:manager)
   end
 
-  def any?
+  def team_member?
     has_role?(:team_member)
   end
-  
+
 end

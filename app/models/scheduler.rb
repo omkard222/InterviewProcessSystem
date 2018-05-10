@@ -1,11 +1,9 @@
 class Scheduler < ApplicationRecord
-    resourcify
+  resourcify
   belongs_to :candidate
-
   belongs_to :requirement
   has_many :feedbacks
   belongs_to :user
-
   validate :interview_date_is_equal_or_greater_than_today
 
 
