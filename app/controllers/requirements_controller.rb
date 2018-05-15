@@ -9,7 +9,11 @@ class RequirementsController < ApplicationController
   end
 
   def index
-    @requirements = Requirement.order(created_at: :desc)
+    @requirements = Requirement.includes(:candidates).search(params[:search]).order(created_at: :desc).page(params[:page]).per(5)
+    respond_to do |format|
+        format.html
+        format.js
+      end
   end
 
 
@@ -30,6 +34,7 @@ class RequirementsController < ApplicationController
 
 
   def create
+
     @requirement = Requirement.new(requirement_params)
     respond_to do |format|
       if @requirement.save

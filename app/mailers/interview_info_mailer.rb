@@ -9,7 +9,8 @@ class InterviewInfoMailer < ApplicationMailer
 
      @scheduler = scheduler
      attachments['Candidate Resume'] = File.read(scheduler.candidate.resume.file.path)
-     mail(to: @scheduler.user.email, subject: 'InterviewInfo')
+    attachments.inline['ig-logo.png'] = File.read("#{Rails.root}/app/assets/images/ig-logo.png")
+     mail(to: @scheduler.user.email, subject: 'Interview Details')
     end
 
 

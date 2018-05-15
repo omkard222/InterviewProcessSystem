@@ -1,4 +1,14 @@
 <center><h1>Requirements</h1><center>
+<div style="float:left;">
+  <form action="" id="search_bloack" accept-charset="UTF-8" method="get">
+    <input name="utf8" type="hidden" value="✓">
+      <p>
+        <input type="text" placeholder="Search By Status" name="search" id="search">
+        <input type="submit" id= "submit" value="Search" data-disable-with="Search">
+      </p>
+  </form>
+</div>
+
   <table class="table table-bordered table-hover " >
     <thead class="table-header">
       <tr>
@@ -98,10 +108,32 @@
 <br/>
 
 
+<center style = "float: right;">
+
+<%= paginate @requirements %>
+
+<center>
+
 <script>
 $('.show-details-btn').on('click', function(e) {
   e.preventDefault();
   $(this).closest('tr').next().toggleClass('open');
   $(this).find(ace.vars['.icon']).toggleClass('fa-angle-double-down').toggleClass('fa-angle-double-up');
 });
+</script>
+<script>
+$(document).ready(function(){
+  $("#submit").click(function(){
+
+    $.ajax({
+        type: 'GET',
+        url: "<%requirements_path%>",
+        data: $('#search_bloack').serialize(),
+        success: function(response) {
+           alert("Submitted comment");
+        },
+
+    });
+ });
+});​
 </script>

@@ -14,4 +14,12 @@ class Requirement < ApplicationRecord
     end
   end
 
+  def self.search(search)
+
+    if search
+      where('status LIKE ?',"%#{search}%")
+    else
+      Requirement.all
+    end
+  end
 end
