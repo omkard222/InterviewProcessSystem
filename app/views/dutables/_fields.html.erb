@@ -1,67 +1,92 @@
-<%=form_for @dutable do |f| %>
+<style>
+.widget-box {
+  padding: 30px;
+  padding-left: 10px;
+  padding-right: 0px;
+  box-shadow: none;
+  margin: 3px 0;
+
+  border-radius: 5px;
+  border-color: 1px solid #ddd;
+  background-color: #f2f2f2;
+
+}
+.right{
+  float: right;
+
+}
+.actions{padding-right: 50px;
+  padding-bottom: 10px;}
+</style>
+<div class ="col-md-6 col-md-offset-3 form-horizontal" >
+  <div class = "widget-box">
+    <%=form_for @dutable do |f| %>
 
 
-<% if !@dutable.persisted? %>
+    <% if !@dutable.persisted? %>
 
-<div class="container">
-  <h1>Delivery Unit Information</h1>
-  <div class="row">
-    <div class="col-md-8" style="display: inline;">
 
-      <p>
-      </p>
-      <div class="bold-inline" style="font-weight:900;" >
-        <label for="dutable_DU_Name" style="font-weight:900;" >Deliveryunit Name:</label>
+
+    <br>
+
+    <div class="form-group" style ="margin-left:0px">
+      <label class="col-sm-3 control-label "for="form-field-1" style="font-size:16px;" >Delivery Unit Name</label>
+
+      <div class="col-sm-9">
+        <input type="text" name="dutable[du_name]" id="dutable_du_name" class="col-xs col-sm-8" required>
       </div>
-      <input type="text" name="dutable[du_name]" id="dutable_du_name" required>
+    </div>
 
-      <p>
-      </p>
-      <p>
-      </p>
 
-      <div class="bold-inline" style="font-weight:900;">
-        <label for="dutable_Description" style="font-weight:900;" >Description:</label>
+
+
+    <div class="form-group" style ="margin-left:0px">
+      <label class="col-sm-3 control-label"  for="form-field-1" style="padding-top: 10px;font-size:16px;" >Description</label>
+
+      <div class="col-sm-9" style = "padding-top: 10px">
+        <textarea name="dutable[du_description]" id="dutable_du_description" class="col-xs col-sm-8" required></textarea>
       </div>
+    </div>
 
-      <textarea name="dutable[du_description]" id="dutable_du_description" required></textarea>
 
 
+    <%end%>
+
+
+
+
+
+    <table class = 'table ' style= "width: 700px;">
+      <thead style="border: 1px solid #ddd;
+      padding: 8px;" >
+      <tr>
+        <th style="font-weight: 400;"> Project Name </th>
+
+        <th style="font-weight: 400;" > Description </th>
+        <th style="font-weight: 400;">Manager</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody class ='tasks'>
+      <%=f.fields_for :projects do |b|%>
+      <%= render 'project_fields', :f =>b %>
+      <%end%>
+
+    </tbody>
+
+  </table>
+
+  <center>
+    <%= link_to_add_association 'Add project', f , :projects , class: "btn btn-success",
+    data: {association_insertion_node: '.tasks', association_insertion_method: :append}%>
+    <center>
+      <div class ='actions'>
+
+        <%= f.submit "Save", class: "btn btn-primary right" %>
+
+      </div>
+      <%end%>
 
     </div>
   </div>
-<%end%>
-
-<hr>
-
-
-<table class = 'table'>
-  <thead>
-    <tr>
-      <th> Project Name </th>
-
-      <th> Description </th>
-        <th></th>
-    </tr>
-  </thead>
-
-  <tbody class ='tasks'>
-    <%=f.fields_for :projects do |b|%>
-     <%= render 'project_fields', :f =>b %>
-    <%end%>
-
-  </tbody>
-
-</table>
-<center>
-<%= link_to_add_association 'Add project', f , :projects , class: "btn btn-success",
- data: {association_insertion_node: '.tasks', association_insertion_method: :append}%>
-<center>
-<div class ='form-actions'>
-
-  <%= f.submit "Save", class: "btn btn-primary" %>
-
-</div>
-<%end%>
-
-</div>

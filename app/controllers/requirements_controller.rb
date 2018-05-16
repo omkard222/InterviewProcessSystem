@@ -9,7 +9,7 @@ class RequirementsController < ApplicationController
   end
 
   def index
-    @requirements = Requirement.includes(:candidates).search(params[:search]).order(created_at: :desc).page(params[:page]).per(5)
+    @requirements = Requirement.includes(:candidates).search(params[:search]).order(created_at: :desc).page(params[:page]).per(1)
     respond_to do |format|
         format.html
         format.js
