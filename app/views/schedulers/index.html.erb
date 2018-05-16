@@ -1,8 +1,10 @@
 
 <%if current_user.manager?%>
   <%= render 'manager_feedback_page'%>
-<%elsif current_user.any?%>
+<%elsif current_user.team_member?%>
     <%= render 'employee_feedback_page'%>
-<%else%>
+<%elsif current_user.hr?%>
     <%= render 'feedback'%>
+    <%else%>
+    <h1>Hello</h1>
 <%end%>

@@ -1,0 +1,45 @@
+
+
+<Center><h1>Project List</h1></center>
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Sr No.</th>
+        <th>Details</th>
+        <th>Project Name</th>
+
+        <th>No of Requirements</th>
+        <th></th>
+        <!-- <th></th> -->
+
+      </tr>
+    </thead>
+    <tbody>
+
+      <% @project_list.each_with_index do |project, i| %>
+      <tr>
+          <td>
+            <%=i + 1 %>
+          </td>
+
+
+          <td>
+            <%= project.project_name %>
+          </td>
+
+          <td>
+            <%=project.requirements.count %>
+          </td>
+
+
+          <td>
+            <%= link_to 'Details', dutable_get_project_requirement_details_path(project), class:'btn btn-info'%>
+          </td>
+
+      </tr>
+
+
+
+      <% end %>
+    </tbody>
+  </table>

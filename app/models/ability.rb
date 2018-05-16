@@ -9,7 +9,7 @@ class Ability
         can :manage, :all
       elsif user.manager?
         can :read , Feedback
-      else user.any?
+      else user.team_member?
         can :read, Feedback
       end
 

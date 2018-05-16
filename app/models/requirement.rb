@@ -1,14 +1,11 @@
 class Requirement < ApplicationRecord
-    resourcify
+  resourcify
   has_many :candidates, dependent: :destroy
   has_one :scheduler, dependent: :destroy
   has_many :employee_requirement_skills, as: :employee_requirement_skillable
   belongs_to :project
-
-  attr_accessor :skill_id
-
   before_save :build_requirement_skills
-
+  attr_accessor :skill_id
 
 
   def build_requirement_skills
@@ -17,4 +14,12 @@ class Requirement < ApplicationRecord
     end
   end
 
+  def self.search(search)
+
+    if search
+      where('status LIKE ?',"%#{search}%")
+    else
+      Requirement.all
+    end
+  end
 end

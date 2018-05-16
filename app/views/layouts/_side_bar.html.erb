@@ -1,7 +1,7 @@
 <div class="sidebar responsive ace-save-state" id="sidebar">
   <ul class="nav nav-list">
-  
-    <%if current_user.any?%>
+
+    <%if current_user.team_member?%>
 
     <li class="">
       <a href="#" class="dropdown-toggle">
@@ -69,7 +69,7 @@
       <ul class="submenu">
 
         <li class="">
-          <a href="#">
+          <a href="<%=dutables_project_list_by_manager_path%>">
             <i class="ace-icon glyphicon glyphicon-list"></i>
             Listing Project
           </a>

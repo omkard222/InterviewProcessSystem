@@ -1,0 +1,42 @@
+
+
+<Center><h1>Require Positions List</h1></center>
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Sr No.</th>
+        <th>position</th>
+        <th>Status</th>
+
+        <!-- <th></th> -->
+
+      </tr>
+    </thead>
+    <tbody>
+
+      <% @requirements.each_with_index do |requirement, i| %>
+      <tr>
+          <td>
+            <%=i + 1 %>
+          </td>
+
+
+          <td>
+            <%= requirement.position %>
+          </td>
+
+          <td>
+            <%on = requirement.status %>
+            <%if on == 'open'%>
+              <span class="label label-success arrowed">Open</span>
+              <%elsif on == 'closed'%>
+                <span class="label label-danger arrowed-in">Closed</span>
+              <%end%>
+          </td>
+      </tr>
+
+
+
+      <% end %>
+    </tbody>
+  </table>

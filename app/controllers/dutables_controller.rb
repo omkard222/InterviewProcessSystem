@@ -1,27 +1,18 @@
 class DutablesController < ApplicationController
 
-
-  # GET /requirements
-  # GET /requirements.json
   def index
     @dutables = Dutable.all
   end
 
-  # GET /requirements/1
-  # GET /requirements/1.json
-  def show
 
+  def show
     @dutable = Dutable.find(params[:id])
   end
-
-
 
 
   def new
     @dutable = Dutable.new
     @project = @dutable.projects.build
-
-
   end
 
 
@@ -31,6 +22,7 @@ class DutablesController < ApplicationController
 
 
   def create
+
     @dutable = Dutable.new(dutable_params)
     respond_to do |format|
       if @dutable.save
@@ -46,18 +38,15 @@ class DutablesController < ApplicationController
   end
 
   def update
+
     @dutable = Dutable.find(params[:id])
     respond_to do |format|
       if @dutable.update(dutable_params)
         format.html { redirect_to @dutable,notice: 'Updated Successfully' }
-
-
       else
         render :edit
-
       end
     end
-
   end
 
   def destroy
@@ -71,13 +60,24 @@ class DutablesController < ApplicationController
   def get_project_list
     @dutable = Dutable.find(params[:id])
     respond_to do |format|
-    format.js
+      format.js
+    end
   end
+
+
+  def get_project_requirement_details
+    @project = Project.find(params[:id])
+    @requirements =@project.requirements.order(created_at: :desc)
   end
+
+  def project_list_by_manager
+    @project_list = Project.where(user_id: current_user.id)
+  end
+
 
   private
 
   def dutable_params
-    params.require(:dutable).permit(:du_name, :du_description, projects_attributes: [:id, :project_name,:pro_description, :_destroy] )
+    params.require(:dutable).permit(:du_name, :du_description, projects_attributes: [:id, :project_name,:pro_description,:user_id, :_destroy] )
   end
 end

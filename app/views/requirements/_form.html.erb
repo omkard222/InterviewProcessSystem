@@ -20,6 +20,7 @@
 
 
   <div class ="col-md-6 col-md-offset-3">
+
     <div class = "widget-box">
       <%= form_for @requirement, html: {class: "form-horizontal"} do |f| %>
       <% if @requirement.errors.any? %>
@@ -41,6 +42,27 @@
         <div class="col-sm-9">
           <input class="col-xs-10 col-sm-8" type="text" name="requirement[opportunityID]" value="<%=@requirement.opportunityID%>" id="requirement_opportunityID" class="col-xs col-sm-8" required>
         </div>
+
+    <%= form_for @requirement, html: {class: "form-horizontal"}, id: 'form_data' do |f| %>
+    <% if @requirement.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= "#{pluralize(@requirement.errors.count, "error")} prohibited this requirement from being saved:" %>
+      </h2>
+      <ul>
+        <% @requirement.errors.full_messages.each do |message| %>
+        <li>
+          <%= message %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+    <div class="form-group">
+      <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Opportunity Id </label>
+      <div class="col-sm-9">
+        <input class="col-xs-10 col-sm-5" type="text" name="requirement[opportunityID]" value="<%=@requirement.opportunityID%>" id="requirement_opportunityID" class="col-xs col-sm-5" required>
+
       </div>
 
       <div class="form-group">

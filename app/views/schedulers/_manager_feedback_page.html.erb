@@ -1,7 +1,16 @@
-<h1>Listing Interviews</h1>
+
+<h1>List of Candidates</h1>
+  <%if @d.blank?%>
+<h2>No Records Found</h2>
+
+<%else%>
+
+
 <table class="table table-bordered table-hover">
   <thead>
     <tr>
+      <th>Project Name</th>
+      <th>Position</th>
       <th>Candidate name</th>
       <th>Interviewer</th>
       <th>Interview Date</th>
@@ -10,15 +19,22 @@
       <th>Round</th>
       <th>Type</th>
       <th>Last Feedback</th>
-      <th>Form</th>
       <th>Feedback Details</th>
 
 
     </tr>
   </thead>
   <tbody>
-    <%  @schedulers.each do |scheduler| %>
+
+
+    <%  @d.each do |scheduler| %>
       <tr>
+        <td>
+          <%= scheduler.requirement.project.project_name %>
+        </td>
+        <td>
+          <%= scheduler.requirement.position %>
+        </td>
         <td>
           <%= scheduler.candidate.candidate_full_name rescue '' %>
         </td>
@@ -33,6 +49,7 @@
         <td>
           <%= scheduler.start_time %>
         </td>
+
         <td>
           <%= scheduler.end_time %>
         </td>
@@ -52,9 +69,6 @@
             <span class="label label-warning">Hold</span>
           <%end%>
         </td>
-        <td>
-        <%= link_to "Feedback Form", new_scheduler_feedback_path(scheduler) %>
-        </td>
 
         <td>
 
@@ -65,3 +79,5 @@
     <% end %>
   </tbody>
 </table>
+
+<%end%>

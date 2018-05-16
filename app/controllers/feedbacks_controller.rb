@@ -1,12 +1,11 @@
 class FeedbacksController < ApplicationController
-  def index
 
+  def index
     @scheduler = Requirement.find(params[:scheduler_id])
     @feedbacks = @scheduler.feedbacks
   end
 
   def get_feedback
-
     @feed = Feedback.where(candidate_id: params[:candidate_id])
     @sch = Scheduler.all
   end
@@ -17,9 +16,7 @@ class FeedbacksController < ApplicationController
   end
 
   def create
-  
     @scheduler = Scheduler.find(params[:scheduler_id])
-
     @feedback = @scheduler.feedbacks.new(feedback_params)
     respond_to do |format|
       if @feedback.save
@@ -31,14 +28,13 @@ class FeedbacksController < ApplicationController
   end
 
   def show
-
     @feedback = Feedback.find(params[:id])
   end
 
 
 
   private
-  # Use callbacks to share common setup or constraints between actions.
+  
   def set_feedback
     @feedback = Feedback.find(params[:id])
   end
