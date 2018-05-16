@@ -1,100 +1,123 @@
+<style>
+.widget-box {
+  padding: 30px;
+  padding-left: 30px;
+  padding-right: 0px;
+  box-shadow: none;
+  margin: 3px 0;
 
-<div class="row">
+  border-radius: 5px;
+  border-color: 1px solid #ddd;
+  background-color: #f2f2f2;
+}
+.right{
+  float: right;
+
+}
+.actions{padding-right: 200px;
+  padding-bottom: 10px;}
+  </style>
+
 
   <div class ="col-md-6 col-md-offset-3">
-    <%= form_for @requirement, html: {class: "form-horizontal"} do |f| %>
-    <% if @requirement.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= "#{pluralize(@requirement.errors.count, "error")} prohibited this requirement from being saved:" %>
-      </h2>
-      <ul>
-        <% @requirement.errors.full_messages.each do |message| %>
-        <li>
-          <%= message %>
-        </li>
-        <% end %>
-      </ul>
-    </div>
-    <% end %>
-    <div class="form-group">
-      <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Opportunity Id </label>
-      <div class="col-sm-9">
-        <input class="col-xs-10 col-sm-5" type="text" name="requirement[opportunityID]" value="<%=@requirement.opportunityID%>" id="requirement_opportunityID" class="col-xs col-sm-5" required>
+    <div class = "widget-box">
+      <%= form_for @requirement, html: {class: "form-horizontal"} do |f| %>
+      <% if @requirement.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= "#{pluralize(@requirement.errors.count, "error")} prohibited this requirement from being saved:" %>
+        </h2>
+        <ul>
+          <% @requirement.errors.full_messages.each do |message| %>
+          <li>
+            <%= message %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+      <div class="form-group">
+        <label class="col-sm-3 control-label " for="form-field-1">Opportunity Id </label>
+        <div class="col-sm-9">
+          <input class="col-xs-10 col-sm-8" type="text" name="requirement[opportunityID]" value="<%=@requirement.opportunityID%>" id="requirement_opportunityID" class="col-xs col-sm-8" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label " for="form-field-1">Designation</label>
+        <div class="col-sm-9">
+          <input class="col-xs-10 col-sm-8" type="text" name="requirement[position]" value="<%=@requirement.position%>" id="requirement_position" class="col-xs col-sm-8" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label " for="form-field-1">Job Description(Min 10 chars and Max 2000 chars)</label>
+        <div class="col-sm-9">
+          <textarea name="requirement[job_description]" minlength="10" maxlength="2000"  id="requirement_job_description" class="col-xs col-sm-8" required></textarea>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label " for="form-field-1">Job Summary(Min 10 chars and Max 500 chars)</label>
+        <div class="col-sm-9">
+          <textarea name="requirement[job_summary]" minlength="10" maxlength="500"  id="requirement_job_summary" class="col-xs col-sm-8" required></textarea>
+        </div>
+      </div>
+
+
+
+
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label " for="form-field-1"> Skills </label>
+        <div class="col-sm-9">
+          <select name="requirement[skill_id]" class="col-xs-10 col-sm-8" id="requirement_skill_id" value="<%=@requirement.skill_id%>" required>
+            <option value="1">Java</option>
+            <option value="2">Front End</option>
+            <option value="3">Dot Net</option>
+            <option value="4">Ruby On Rails</option>
+
+          </select>
+        </div>
+      </div>
+
+
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label " for="form-field-1"> Experience(yrs)</label>
+        <div class="col-sm-9">
+
+          <%= f.select(:experience, ( 0..50 ), {}, { :class => 'col-xs-10 col-sm-8' }) %>
+
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label " for="form-field-1"> Qualification </label>
+        <div class="col-sm-9">
+          <input class="col-xs-10 col-sm-8" type="text" name="requirement[qualification]" value="<%=@requirement.qualification%>" id="requirement_qualification" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label " for="form-field-1">Status</label>
+        <div class="col-sm-9">
+          <select name="requirement[status]" class="col-xs-10 col-sm-8" id="requirement_status"  value="<%=@requirement.status%>" required>
+            <option value="open">open</option>
+            <option value="closed">Closed</option>
+            <option value="hold">Hold</option>
+          </select>
+        </div>
+      </div>
+
+
+      <div class="actions">
+        <%= f.hidden_field :project_id%>
+        <%= f.submit 'Save' , class: "btn btn-primary right" %>
+      </div>
+      <% end %>
+      <center>
+
+        <%= link_to 'Back', requirements_path, class: "col-sm-3 control-label"  %>
       </div>
     </div>
-
-    <div class="form-group">
-      <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Designation</label>
-      <div class="col-sm-9">
-        <input class="col-xs-10 col-sm-5" type="text" name="requirement[position]" value="<%=@requirement.position%>" id="requirement_position" class="col-xs col-sm-5" required>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Job Description(Min 10 chars and Max 2000 chars)</label>
-      <div class="col-sm-9">
-        <textarea name="requirement[job_description]" minlength="10" maxlength="2000"  id="requirement_job_description" class="col-xs col-sm-5" required></textarea>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Job Summary(Min 10 chars and Max 500 chars)</label>
-      <div class="col-sm-9">
-        <textarea name="requirement[job_summary]" minlength="10" maxlength="500"  id="requirement_job_summary" class="col-xs col-sm-5" required></textarea>
-      </div>
-    </div>
-
-
-
-
-
-    <div class="form-group">
-      <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Skills </label>
-      <div class="col-sm-9">
-        <select name="requirement[skill_id]" id="requirement_skill_id" value="<%=@requirement.skill_id%>" required>
-          <option value="1">Java</option>
-          <option value="2">Front End</option>
-          <option value="3">Dot Net</option>
-          <option value="4">Ruby On Rails</option>
-
-        </select>
-      </div>
-    </div>
-
-
-
-    <div class="form-group">
-      <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Experience(yrs)</label>
-      <div class="col-sm-9">
-        <%= f.select :experience, options_for_select(0..50) %>
-
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Qualification </label>
-      <div class="col-sm-9">
-        <input class="col-xs-10 col-sm-5" type="text" name="requirement[qualification]" value="<%=@requirement.qualification%>" id="requirement_qualification" required>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Status</label>
-      <div class="col-sm-9">
-        <select name="requirement[status]" id="requirement_status"  value="<%=@requirement.status%>" required>
-          <option value="open">open</option>
-          <option value="closed">Closed</option>
-          <option value="hold">Hold</option>
-        </select>
-      </div>
-    </div>
-
-
-    <div class="actions">
-      <%= f.hidden_field :project_id%>
-      <%= f.submit 'Save' , class: "btn btn-primary" %>
-    </div>
-    <% end %>
-  </div>
-</div>
