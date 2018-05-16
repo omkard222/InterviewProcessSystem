@@ -1,33 +1,124 @@
-<p>
-  <b>Opportunity ID:</b>
-  <%= @requirement.opportunityID %>
-</p>
-<p>
-  <b>Position:</b>
-  <%= @requirement.position %>
-</p>
-<p>
-  <b>Skills:</b>
-  <%=@requirement.skills%>
-</p>
-<p>
-  <b>Experience:</b>
-  <%= @requirement.experience %>
-</p>
+<div class="container">
+  <div class="row">
 
-<p>
-  <b>Qualification:</b>
-  <%= @requirement.qualification %>
-</p>
-<p>
-  <b>Job Description:</b>
-  <%= @requirement.job_description %>
-</p>
+    <div class="col-md-3">
+      <p>
+      </p>
+      <div class="bold-inline" style="font-weight:900;" >Opportunity ID:</div>
+        <%= @requirement.opportunityID %>
+      <p>
+      </p>
+      <p>
+      </p>
+      <div class="bold-inline" style="font-weight:900;" >Position:</div>
+      <%= @requirement.position %>
+      <p></p>
+    </div>
 
-<p>
-  <b>Job Summary:</b>
-  <%= @requirement.job_summary %>
-</p>
+
+
+
+    <div class="col-md-3">
+          <p>
+          </p><div class="bold-inline"  style="font-weight:900;" >Skills:</div>
+            <%=@requirement.skills%>
+          <p></p>
+          <p>
+          </p><div class="bold-inline"  style="font-weight:900;" >Experience:</div>
+          <%= @requirement.experience %>
+          <p></p>
+    </div>
+
+    <div class="col-md-3">
+          <p>
+          </p><div class="bold-inline"  style="font-weight:900;" >Qualification:</div>
+          <%= @requirement.qualification %>
+
+    </div>
+
+
+    <div class="col-md-3">
+          <p>
+          </p><div class="bold-inline"  style="font-weight:900;" >Job Description:</div>
+            <%= @requirement.job_description %>
+          <p></p>
+          <p>
+          </p><div class="bold-inline"  style="font-weight:900;" >Job Summary:</div>
+          <%= @requirement.job_summary %>
+          <p></p>
+    </div>
+  </div>
+</div>
+
+<table id="dynamic-table" class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Sr No</th>
+      <th>Candidate Name</th>
+
+      <th>Contact</th>
+      <th>Email</th>
+      <th>Resume</th>
+      <th>Interviewer Status</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%  @requirement.candidates.each_with_index do |candidate, i| %>
+    <tr>
+      <td>
+        <%=i + 1 %>
+      </td>
+      <td>
+        <%= candidate.candidate_full_name %>
+      </td>
+
+      <td>
+        <%= candidate.contact %>
+      </td>
+      <td>
+        <%= candidate.email %>
+      </td>
+
+      <td>
+        <%= link_to "Download Resume", candidate.resume_url %>
+      </td>
+
+      <td>
+
+        <%interviewer_feedback = candidate.schedulers.last.feedbacks.last.status rescue nil%>
+          <%if interviewer_feedback.present?%>
+            <%if interviewer_feedback == 'Rejected'%>
+              <span class="label label-danger arrowed-in">Rejected</span>
+            <%elsif interviewer_feedback == 'Shortlisted'%>
+              <span class="label label-success arrowed">Shortlisted</span>
+            <%elsif interviewer_feedback == 'Hold'%>
+              <span class="label label-warning">Hold</span>
+            <% end%>
+        <%else%>
+          <span class="label label-primary arrowed arrowed-right">No Feedback Yet</span>
+        <%end%>
+      </td>
+
+
+      <%if candidate.requirement.status == "closed" %>
+      <td>
+        <%= link_to "Schedule_Interview", "#"%>
+      </td>
+      <%else%>
+      <td>
+        <%= link_to "Schedule Interview", new_requirement_candidate_scheduler_path(@requirement, candidate) %>
+      </td>
+      <%end%>
+
+
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
 <%= link_to 'Edit', edit_requirement_path(@requirement) %>
 |
 <%= link_to 'Back', project_path(@requirement.project) %>

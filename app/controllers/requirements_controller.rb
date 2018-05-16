@@ -40,9 +40,11 @@ class RequirementsController < ApplicationController
       if @requirement.save
         format.html { redirect_to @requirement, notice: 'Requirement was successfully created.' }
         format.json { render :show, status: :created, location: @requirement }
+        format.js 
       else
         format.html { render :new }
         format.json { render json: @requirement.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
