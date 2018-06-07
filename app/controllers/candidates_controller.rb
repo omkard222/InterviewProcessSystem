@@ -5,7 +5,7 @@ class CandidatesController < ApplicationController
   # GET /candidates.json
   def index
     @requirement = Requirement.find(params[:requirement_id])
-    @candidates = @requirement.candidates
+    @candidates = @requirement.candidates.includes(:candidate)
   end
 
   def allcandidate
@@ -18,6 +18,7 @@ class CandidatesController < ApplicationController
   end
 
   def new
+
     @requirement = Requirement.find(params[:requirement_id])
     @candidate = @requirement.candidates.new
   end
@@ -33,9 +34,11 @@ class CandidatesController < ApplicationController
     respond_to do |format|
         if @candidate.save
           format.html { redirect_to [@requirement,@candidate], notice: 'Candidate was successfully created.' }
+          format.js
           format.json { render :show, status: :created, location: @candidate }
         else
           format.html { render :new }
+          format.js
           format.json { render json: @candidate.errors, status: :unprocessable_entity }
         end
     end

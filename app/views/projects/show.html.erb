@@ -71,10 +71,10 @@
  <div class="modal-dialog">
    <div class="modal-content">
 
-     <div class="modal-header">
-        <h5 class="modal-title">New Requirement</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+     <div style="  background-color:#85929E;"class="modal-header">
+      <center>  <h3 style="color:#F8F9F9;" class="modal-title">New Requirement</h3>
+        <button style="color:#212F3D;"  type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span style="color:#212F3D;"  aria-hidden="true">&times;</span>
         </button>
       </div>
 
@@ -149,7 +149,7 @@
       </form>
     </div>
         <%= f.hidden_field :project_id, :value => @project.id, class:"req_hide"; %>
-    <div class="modal-footer">
+     <div class="modal-footer">
        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
        <button type="submit" id="dialog" name="commit" value="Save" id="save" class="btn btn-primary" data-disable-with="Save">Create</button>
      </div>

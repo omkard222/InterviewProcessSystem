@@ -23,7 +23,10 @@
 //= require cocoon
 //= require bootstrap-timepicker.min.js
 //= require bootstrap-datetimepicker.min.js
-// require dataTables.select.min.js
+//= require dataTables.select.min.js
 //= require ace-elements.min.js
 // require dataTables.buttons.min.js
 //= require chosen.jquery.min.js
+//= require jquery.dataTables.min.js
+//= require jquery-1.12.4.js
+//= require jquery.dataTables.bootstrap.min.js

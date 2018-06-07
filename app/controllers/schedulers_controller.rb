@@ -2,7 +2,7 @@ class SchedulersController < ApplicationController
 
 
   def index
-    @schedulers = Scheduler.all
+    @schedulers = Scheduler.includes(:feedbacks).all
     @employee_feedback = Scheduler.where(user_id: current_user.id)
     @projects = Project.where(user_id: current_user.id)
     @a = @projects.pluck(:id)

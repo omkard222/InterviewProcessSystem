@@ -1,0 +1,9 @@
+<%- if @candidate.errors.any? %>
+
+
+alert("Some fields are empty")
+
+
+<%- else%>
+<%- end%>
+window.location.href = "/requirements/<%=@candidate.requirement.id%>"; 

@@ -6,7 +6,7 @@ class Requirement < ApplicationRecord
   belongs_to :project
   before_save :build_requirement_skills
   attr_accessor :skill_id
-
+  validates :project_id,  presence: true
 
   def build_requirement_skills
     if new_record?
@@ -22,4 +22,6 @@ class Requirement < ApplicationRecord
       Requirement.all
     end
   end
+
+
 end

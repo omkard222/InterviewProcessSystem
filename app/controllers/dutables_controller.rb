@@ -1,7 +1,7 @@
 class DutablesController < ApplicationController
 
   def index
-    @dutables = Dutable.all
+    @dutables = Dutable.includes(:projects).all
   end
 
 

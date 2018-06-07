@@ -75,8 +75,11 @@ GEM
       railties (>= 4.1.0, < 6.0)
       responders
       warden (~> 1.2.3)
+    diff-lcs (1.3)
     erubi (1.7.1)
     execjs (2.7.0)
+    factory_bot (4.10.0)
+      activesupport (>= 3.0.0)
     faker (1.8.7)
       i18n (>= 0.7)
     ffi (1.9.23)
@@ -160,6 +163,23 @@ GEM
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
     rolify (5.2.0)
+    rspec-core (3.7.1)
+      rspec-support (~> 3.7.0)
+    rspec-expectations (3.7.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.7.0)
+    rspec-mocks (3.7.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.7.0)
+    rspec-rails (3.7.2)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (~> 3.7.0)
+      rspec-expectations (~> 3.7.0)
+      rspec-mocks (~> 3.7.0)
+      rspec-support (~> 3.7.0)
+    rspec-support (3.7.0)
     ruby_dep (1.5.0)
     rubyzip (1.2.1)
     sass (3.5.6)
@@ -224,6 +244,7 @@ DEPENDENCIES
   cocoon
   coffee-rails (~> 4.2)
   devise
+  factory_bot
   faker
   haml
   jbuilder (~> 2.5)
@@ -233,6 +254,7 @@ DEPENDENCIES
   puma (~> 3.7)
   rails (~> 5.1.5)
   rolify
+  rspec-rails
   sass-rails (~> 5.0)
   selenium-webdriver
   spring

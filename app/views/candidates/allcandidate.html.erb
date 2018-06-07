@@ -3,10 +3,9 @@
   <thead>
     <tr>
       <th>Candidate Full_Name</th>
-
       <th>Contact</th>
       <th>Email</th>
-
+      <th>Resume</th>
 
 
 
@@ -18,18 +17,15 @@
         <td>
           <%= candidate.candidate_full_name %>
         </td>
-
         <td>
           <%= candidate.contact %>
-
         </td>
         <td>
           <%= candidate.email %>
-
-
         </td>
+        <td id="k"><%= link_to "Download Resume", candidate.resume_url  %></td>
 
-  
+
 
 
 

@@ -9,11 +9,13 @@ class RequirementsController < ApplicationController
   end
 
   def index
-    @requirements = Requirement.includes(:candidates).search(params[:search]).order(created_at: :desc).page(params[:page]).per(1)
+    @requirements = Requirement.includes(:candidates).order(created_at: :desc).page(params[:page]).per(5)
     respond_to do |format|
         format.html
         format.js
       end
+
+      @candidate = Candidate.new
   end
 
 
@@ -35,12 +37,13 @@ class RequirementsController < ApplicationController
 
   def create
 
+
     @requirement = Requirement.new(requirement_params)
     respond_to do |format|
       if @requirement.save
         format.html { redirect_to @requirement, notice: 'Requirement was successfully created.' }
         format.json { render :show, status: :created, location: @requirement }
-        format.js 
+        format.js
       else
         format.html { render :new }
         format.json { render json: @requirement.errors, status: :unprocessable_entity }

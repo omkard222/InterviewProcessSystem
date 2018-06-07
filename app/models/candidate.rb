@@ -5,12 +5,12 @@ class Candidate < ApplicationRecord
   has_many :schedulers, dependent: :destroy
   has_many :feedbacks, dependent: :destroy
 
-  validates :resume, presence: true
+  validates :resume, :first_name, :last_name, :email,  presence: true
 
 
   def candidate_full_name
     self.first_name + " " + self.last_name
   end
 
-  
+
 end
